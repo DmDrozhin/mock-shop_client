@@ -1,0 +1,51 @@
+$green-btn: #329c26;
+$green-btn-a: #329c2680;
+$salad-fnt: #30af30;
+$main-shadow:  2px 2px 10px gray;
+$semi-trans-bgrnd: rgba(255, 255, 255, 0.8);
+$base-radius: .4rem;
+$large-radius: 1rem;
+$warn-txt: rgb(250, 126, 112);
+$grey-txt: #7e7e7e;
+$dark-grey-txt: #424242;
+$icon-color: #b2d6b6;
+$acc-txt-color: #106c70;
+
+@mixin up-arr-btn {
+  appearance: none;
+  border-style: none;
+  display: block;
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid rgb(178, 214, 182);
+  &:disabled {
+    border-bottom: 12px solid rgb(196, 196, 196);
+  }
+}
+
+@mixin down-arr-btn {
+  appearance: none;
+  border-style: none;
+  display: block;
+  background-color: transparent;
+  width: 0; 
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid rgb(178, 214, 182);
+  &:disabled {
+    border-top: 12px solid rgb(196, 196, 196);
+  }
+}
+
+@mixin prod-card-side2-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 100%;
+}

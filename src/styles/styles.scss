@@ -1,0 +1,126 @@
+@import 'variables.scss';
+
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+@import '~material-design-icons-iconfont/src/material-design-icons';
+
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: auto;
+}
+body {
+  height: 100vh;
+  background-image: url('@/assets/images/main-background.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  // backdrop-filter: blur(2px) grayscale(50%) brightness(50%);
+  backdrop-filter: blur(2px) grayscale(50%);
+  
+  z-index: -1;
+}
+h1 {
+  font-size: 3rem;
+  color: #6495ed;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .4rem;
+}
+h2 {
+  font-size: 2.5rem;
+  color: #878686;
+  text-align: center;
+  line-height: 4rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+h3 {
+  font-size: 1.5rem;
+  color: $green-btn;
+  letter-spacing: .2rem;
+  text-align: center;
+  text-transform: uppercase;  
+}
+.hr1 {
+  width: 90%;  
+  border: 2px solid #6495ed;  
+  margin: .5rem 1px .5rem auto;  
+}
+.hr2 {
+  width: 80%;
+  border: 1px solid lightgray;
+  margin: .5rem auto;
+  margin: 0 0 .5rem 0;
+}
+.hr3 {
+  width: 100%;
+  border: 2px solid #6495ed;  
+  margin: .5rem 1px .5rem auto;  
+}
+.flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-wrapper-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-info {
+  font-size: .7rem;
+  color: $salad-fnt;
+}
+.tech-info-gray {
+  font-size: .7rem;
+  color: gray;
+}
+
+.total {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $salad-fnt;
+}
+.sub-total {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: $salad-fnt;
+}
+.alert-txt-animated {
+  @keyframes alert {
+    0% {transform: scale(1);}
+    50% {transform: scale(2);}
+    100% {transform: scale(1);}
+  }
+  color: red;
+  animation: 1s ease-in 1s infinite reverse both running alert;
+}
+.alert-txt {
+  color: red;
+  line-height: 1.4;
+}
+.block {
+  display: block;
+}
+i {
+  color: grey;
+  margin-right: .3rem;
+}
+
+.material-icons {
+  color: $salad-fnt;
+}
+
+.text-wrap {
+  text-wrap: balance;
+  
+}
+
+
+// 1st 1280px, 2nd 980px, 3d 768px, 4th 580px, 5th 320px
