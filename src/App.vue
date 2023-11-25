@@ -3,14 +3,18 @@
   <div 
     class="app"  
     @click.capture="$store.commit('SET_CLICKED_ELEMENT_CLASS', $event.target.className)"
-  >
+    :style="{'overflow': modalActive}"
+    
+  >   <!-- <<<<<<<<<<< MODAL Wind -->
+    <div class="app___ui-modal-window">
+      <ui-modal-wind></ui-modal-wind> 
+    </div>
+    <!-- <<<<<<<<<<< LOADER -->
+    <div class="app__loader-block">
+      <ui-loader v-if="IS_LOADER"></ui-loader>
+    </div>
+    
     <header>
-      <!-- <<<<<<<<<<< MODAL Wind -->
-      <ui-modal-wind></ui-modal-wind>
-      <!-- <<<<<<<<<<< LOADER -->
-      <div class="app__loader-block">
-        <ui-loader v-if="IS_LOADER"></ui-loader>
-      </div>
       <!-- <<<<<<<<<<< TITLE RAW -->
       <div class="app__title flex-wrapper">
         <ui-main-icon :size="100"></ui-main-icon>
@@ -96,8 +100,9 @@ export default {
     ...mapActions (['GET_PRODS_FM_SERVER', 'SET_MOBILE'])
   },
   computed: {
-    ...mapGetters(['CART_PRODS_QT', 'ORDER', 'IS_LOADER']),
-    showQt () { return this.CART_PRODS_QT > 0 }
+    ...mapGetters(['CART_PRODS_QT', 'ORDER', 'IS_LOADER', 'MODAL']),
+    showQt () { return this.CART_PRODS_QT > 0 },
+    modalActive() { return this.MODAL.isBaseActive ? 'hidden' : 'auto' }
   },
   watch: {
     isMobile (val) { this.SET_MOBILE(val) }
@@ -129,18 +134,21 @@ export default {
 .app {
   z-index: 0;
   padding: 0 1rem;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;  
+  justify-content: space-between;
+  scrollbar-width: thin;
   header {
     z-index: 10;
+    flex: 0 1 auto;
   }
   main {
     flex: 1 1 auto;
     margin-bottom: 2rem;
   }
   footer {
+    flex: 0 1 auto;
     .footer{
       &__text {
         text-align: center;
@@ -225,5 +233,6 @@ export default {
       }
     }
   }
+
 }
 </style>

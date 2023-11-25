@@ -9,10 +9,10 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  height: auto;
 }
 body {
   height: 100vh;
+  width: 100vw;
   background-image: url('@/assets/images/main-background.avif');
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,8 +20,7 @@ body {
   background-attachment: fixed;
   // backdrop-filter: blur(2px) grayscale(50%) brightness(50%);
   backdrop-filter: blur(2px) grayscale(50%);
-  
-  z-index: -1;
+  // z-index: -1;
 }
 h1 {
   font-size: 3rem;
