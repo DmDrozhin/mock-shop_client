@@ -80,6 +80,7 @@ export default {
   left: 0;
   top: -40px;
   width: 100%;
+  font-weight: 600;
 }
 .select:hover::after {
   content: '';

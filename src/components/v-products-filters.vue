@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      title: 'product filter / sorter:',
+      title: 'display options:',
       size: 'all'
     }
   },
@@ -52,7 +52,8 @@ export default {
       align-self: flex-end;
     }
     &__size-filter {
-      flex-basis: 8%;
+      // flex-basis: 70px;
+      width: 75px;
     }
     &__size-filter.select::before {
       top: -25px;
@@ -60,6 +61,7 @@ export default {
       content: 'by size';
       text-transform: uppercase;
       color: #fff;
+      font-weight: 600;
       letter-spacing: 1.1px;
     }
   }

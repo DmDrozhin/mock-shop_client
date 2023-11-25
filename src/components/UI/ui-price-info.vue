@@ -37,7 +37,7 @@ export default {
     price: { type: Number, default: 0, },
     fontSz: { type: Number, default: 14 },
     label: { type: String, default: '' },
-    isVertical: { type: String, default: true} // could be raw
+    isVertical: { type: Boolean, default: true} // could be raw
   },
 }
 </script>
@@ -52,7 +52,7 @@ export default {
 }
 .ui-price-info-inline {
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
 }

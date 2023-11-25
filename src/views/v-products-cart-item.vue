@@ -24,6 +24,7 @@
           :price="prodData.price"
           :fontSz="1"
           :label="'Ціна'"
+          :isVertical="false"
         ></ui-price-info>
         <ui-text-info
           class="prod-info__stock"
@@ -191,8 +192,7 @@ export default {
       align-items: flex-start;
       // &__article {}
       &__price {
-        flex-direction: row;
-        gap: 0.4rem;
+        max-width: none;
       }
       // &__stock {}
     }
