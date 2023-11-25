@@ -6,9 +6,7 @@
     :style="{'overflow': modalActive}"
     
   >   <!-- <<<<<<<<<<< MODAL Wind -->
-    <div class="app___ui-modal-window">
-      <ui-modal-wind></ui-modal-wind> 
-    </div>
+    <ui-modal-wind></ui-modal-wind>
     <!-- <<<<<<<<<<< LOADER -->
     <div class="app__loader-block">
       <ui-loader v-if="IS_LOADER"></ui-loader>
@@ -138,7 +136,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  scrollbar-width: thin;
+  scrollbar-gutter: stable;
   header {
     z-index: 10;
     flex: 0 1 auto;

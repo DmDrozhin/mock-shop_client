@@ -1,15 +1,15 @@
 <template>
   <div class="ui-modal-wind'">
-    <transition name="base">
+
       <div        
         v-if="MODAL.isBaseActive"
         class="base-wrapper"
         :class="{ 'frozen-background': MODAL.isFrozenBg }"
       >
       </div>
-    </transition>
+
     
-    <transition name="modal">
+
       <div v-if="MODAL.isModalActive" class="modal-slide-wind">
         <ui-modal-wind-item
           :title="MODAL.title"
@@ -19,7 +19,7 @@
           @response="handleResponse($event)"
         ></ui-modal-wind-item>
       </div>
-    </transition>
+
 
   </div>
 </template>
@@ -73,18 +73,21 @@ body {
   overflow: hidden!important;
 }
 .ui-modal-wind {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #892626;
 }
 .base-wrapper {
   z-index: 80;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #00000023;
-  overflow: hidden;
-
 }
 .modal-slide-wind {
   z-index: 90;
