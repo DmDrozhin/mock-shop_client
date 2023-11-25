@@ -38,6 +38,7 @@
           :price="CART_SUM"
           :fontSz="1.5"
           :label="'Сума замовлення:'"
+          :isVertical="false"
         ></ui-price-info>
       </div>
 
@@ -193,11 +194,11 @@ export default {
       }
       &__ui-price-info {
         // background-color: #f2d7d7;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: space-between;
+        // align-items: center;
+        // gap: 1rem;
       }
 
     }

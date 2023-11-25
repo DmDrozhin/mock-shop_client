@@ -42,29 +42,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .ui-text-info {
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
   min-width: 100%;
   gap: 0.5rem;
 }
 .ui-text-info__label1 {
   color: rgb(53, 53, 53);
   font-weight: normal;
-  margin-bottom: -0.5rem;
   text-align: left;
 }
 .ui-text-info__label2 {
   color: rgb(53, 53, 53);
   font-weight: normal;
-  margin-bottom: -0.5rem;
   text-align: left;
 }
 .ui-text-info__num {
   color: rgb(16, 108, 112);
-  margin-bottom: -0.6rem;
   font-weight: 600;
 }
 </style>

@@ -87,14 +87,16 @@
           class="info-price__price"
           :price="product.price"
           :fontSz="2"
+          :isVertical="true"
         ></ui-price-info>
-        <ui-price-info
+        <!-- <ui-price-info
           class="info-price__sum"
           v-show="prodSum > 0 && product.price !== prodSum"
           :label="'сума:'"
           :price="prodSum"
           :fontSz="1.4"
-        >сума</ui-price-info>
+          :isVertical="true"
+        >сума</ui-price-info> -->
       </div>
       <!--*** BUTTON BLOCK ***-->
       <ui-prod-button
