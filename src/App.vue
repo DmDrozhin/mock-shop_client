@@ -37,51 +37,52 @@
             @clickBurger="(toggleNAV())"
           ></ui-nav-burger>
         </div>
+        <div class="header__nav-menu-wrapper">
+          <transition name="nav-menu">
+            <nav 
+              class="header__nav-menu nav-menu"
+              v-if="flagNAV"
+            >
+              <div class="nav-menu__button">
+                <ui-menu-button
+                  :linkTo="'products'"
+                  :title="'products'"
+                  :data="false"
+                  :status="true"
+                  :isMobile="isMobile"
+                ></ui-menu-button>
+              </div>
+            
+              <div class="nav-menu__button">
+                <ui-menu-button
+                  :linkTo="'cart'"
+                  :title="'cart'"
+                  :data="CART_PRODS_QT > 0 ? CART_PRODS_QT : false"
+                  :status="CART_PRODS_QT > 0"
+                  :isMobile="isMobile"
+                ></ui-menu-button>
+              </div>
+            
+              <div class="nav-menu__button">
+                <ui-menu-button
+                  :linkTo="'order'"
+                  :title="'order'"
+                  :data="ORDER.length > 0 ? ORDER.length : false"
+                  :status="ORDER.length > 0"
+                  :isMobile="isMobile"
+                ></ui-menu-button>
+              </div>
+              <div class="nav-menu__button nav-menu__nav-icon nav-icon">
+                <ui-database-icon
+                  class="nav-icon__icon"
+                  :size="60"
+                ></ui-database-icon>
+              </div>
+            </nav>
+          </transition>
+          <hr class="hr1 header__hr1">
+        </div>
 
-        <transition name="nav-menu">
-          <nav 
-            class="header__nav-menu nav-menu"
-            v-if="flagNAV"
-          >
-            <div class="nav-menu__button">
-              <ui-menu-button
-                :linkTo="'products'"
-                :title="'products'"
-                :data="false"
-                :status="true"
-                :isMobile="isMobile"
-              ></ui-menu-button>
-            </div>
-          
-            <div class="nav-menu__button">
-              <ui-menu-button
-                :linkTo="'cart'"
-                :title="'cart'"
-                :data="CART_PRODS_QT > 0 ? CART_PRODS_QT : false"
-                :status="CART_PRODS_QT > 0"
-                :isMobile="isMobile"
-              ></ui-menu-button>
-            </div>
-          
-            <div class="nav-menu__button">
-              <ui-menu-button
-                :linkTo="'order'"
-                :title="'order'"
-                :data="ORDER.length > 0 ? ORDER.length : false"
-                :status="ORDER.length > 0"
-                :isMobile="isMobile"
-              ></ui-menu-button>
-            </div>
-            <div class="nav-menu__button nav-menu__nav-icon nav-icon">
-              <ui-database-icon
-                class="nav-icon__icon"
-                :size="60"
-              ></ui-database-icon>
-            </div>
-          </nav>
-        </transition>
-
-        <hr class="hr1 header__hr1">
       </div>
 
     </header>
@@ -223,6 +224,12 @@ export default {
     gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    &__nav-menu-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
     @include media('max', 'md') {
       justify-content: center;
     }
@@ -265,7 +272,7 @@ export default {
       }
     }
     &__hr1 {
-      flex: 1 1 35%;
+      flex: 0 1 auto;
       @include media('max', 'lg') {
         display: none;
       }
