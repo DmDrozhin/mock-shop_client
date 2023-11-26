@@ -201,6 +201,7 @@ export default {
       }
     }
     @include media('max', 'md') {
+      margin-bottom: 5rem;
       flex-direction: column;
       gap: 0.5rem;
       // &__main-icon {}
@@ -249,7 +250,6 @@ export default {
       align-items: center;
       @include media('max', 'md') {
         flex-direction: column;
-        // justify-content: space-between;
         align-items: center;
         gap: 2rem;
       }

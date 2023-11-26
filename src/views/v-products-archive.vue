@@ -86,8 +86,9 @@ export default {
   position: relative;
   &__title {
     margin-bottom: 1.5rem;
-    @media (max-width: 450px) {
-      font-size: 1.5rem;    
+    @include media('max', 'md') {
+      margin-top: 3rem;
+      font-size: 2.2rem;
     }
   }
   &__filters {
@@ -96,8 +97,19 @@ export default {
     right: 1rem;
     top: -2rem;
     padding: 0.4rem 1rem;
+    @include media('max', 'lg') {
+      top: -8rem;
+      .head-filters {
+        flex-direction: column;
+      }
+    }
     @include media('max', 'md') {
-      top: -8.5rem;
+      top: -2rem;
+      left: 0;
+      right: 0;
+      .head-filters {
+        flex-direction: row;
+      }
     }
   }
   &__window {
