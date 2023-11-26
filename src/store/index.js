@@ -20,7 +20,7 @@ export default new Vuex.Store({
     purchase: [],
     serverResp: '',
 
-    isMobile: false,
+    screen: '',
     isLoaderActive: false,
 
     clickedDOMElement: '',

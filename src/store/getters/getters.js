@@ -58,7 +58,15 @@ export default {
   
   GET_SERVER_RESP: (state) => state.serverResp,
 
-  IS_MOBILE: (state) => state.isMobile,
+  SCREEN: (state) => {
+    const scr = state.screen
+    // if (scr >= 320 && scr < 480) return 'mobile-1'
+    if (scr <= 576) return 'sm'
+    if (scr > 576 && scr <= 768) return 'md'
+    if (scr > 768 && scr <= 992) return 'lg'
+    if (scr > 992 && scr <= 1280 ) return 'xl'
+    if (scr > 1280) return 'xxl'
+  },
 
   IS_LOADER: (state) => state.isLoaderActive,
 

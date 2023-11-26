@@ -192,14 +192,9 @@ export default {
       &__total-sum {
         flex: 1 1 40%;
       }
-      &__ui-price-info {
-        // background-color: #f2d7d7;
-        // display: flex;
-        // flex-direction: row;
-        // justify-content: space-between;
-        // align-items: center;
-        // gap: 1rem;
-      }
+      // &__ui-price-info {
+
+      // }
 
     }
     .part2 {

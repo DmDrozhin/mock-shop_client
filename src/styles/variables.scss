@@ -50,9 +50,16 @@ $acc-txt-color: #106c70;
   min-width: 100%;
 }
 
-$mobile-1: 320px;
-$mobile-2: 480px;
-$mobile-3: 768px;
-$tablet-1: 992px;
-$comp-1: 1280px;
-$comp-2: 1440px;
+$retina-resolution: 192dpi;
+
+$sizes: ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1280px);
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media == $size {
+      @media only screen and (#{$minmax}-width: $resolution) {
+        @content;
+      }
+    }
+  }
+}

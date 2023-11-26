@@ -2,7 +2,7 @@
   <svg
     :width="size" 
     :height="size" 
-    viewBox="0 0 1024 1024" 
+    :viewBox="viewBox" 
     class="ui-main-icon" 
     version="1.1" 
     xmlns="http://www.w3.org/2000/svg" 
@@ -32,20 +32,14 @@
 </template>
 
 <script>
+// API
+// size="120"
+// viewBox="'0 120 650 650'"
 export default {
   name: 'ui-main-icon',
   props: {
-    size: { type: Number, default: 30, required: true }
-  },
-  data() {
-    return {}
-  },
-}
-
-</script>
-
-<style scoped>
-  svg {
-    z-index: -1;
+    size: { type: Number, default: 30, required: true },
+    viewBox: { type: String, default: '0 0 1024 1024' }
   }
-</style>
+}
+</script>

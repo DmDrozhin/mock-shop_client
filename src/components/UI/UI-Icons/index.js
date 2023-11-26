@@ -8,6 +8,7 @@ import crossIcon from '@/components/UI/UI-Icons/ui-cross-icon.vue'
 import arrowFilledIcon from '@/components/UI/UI-Icons/ui-arrow-filled-icon.vue'
 import arrowSideIcon from '@/components/UI/UI-Icons/ui-arrow-side-icon.vue'
 import databaseIcon from '@/components/UI/UI-Icons/ui-database-icon.vue'
+import burgerIcon from '@/components/UI/UI-Icons/ui-burger-icon.vue'
 
 export default [
   arrowIcon, 
@@ -19,5 +20,6 @@ export default [
   crossIcon, 
   arrowFilledIcon,
   arrowSideIcon,
-  databaseIcon
+  databaseIcon,
+  burgerIcon
 ]

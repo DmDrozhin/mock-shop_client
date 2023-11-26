@@ -21,6 +21,11 @@
 </template>
 
 <script>
+// API
+// :direction="'rotate(0)'"
+// :size="25"
+// :color="'#1eb314'"
+// :viewBox="'0 -5 24 24'"
 export default {
   name: 'ui-arrow-filled-icon',
   props: {

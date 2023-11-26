@@ -31,8 +31,8 @@ export  default {
   // ADD_WINDOW_FREEZE_STATUS({commit}, val) {
   //   commit('SET_FEEZE_STATUS', val)
   // },
-  SET_MOBILE({commit}, val) {
-    commit('SET_MOBILE_MODE', val)
+  SET_SCREEN({commit}, val) {
+    commit('SET_SCREEN_SIZE', val)
   },
 
   SET_SELECTED_SIZE({commit}, val) {

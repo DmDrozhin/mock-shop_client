@@ -92,7 +92,7 @@ export default {
 
   // OTHER MUTATIONS
   
-  SET_MOBILE_MODE: (state, val) => state.isMobile = val,
+  SET_SCREEN_SIZE: (state, val) => state.screen = val,
 
   SET_LOADER: (state, val) => state.isLoaderActive = val,
 

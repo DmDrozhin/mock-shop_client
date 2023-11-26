@@ -78,6 +78,7 @@ export default {
 
 
 <style lang="scss" scoped>
+@import '@/styles/styles.scss';
 .v-products-archive,
 .gallery {
   background-color: rgba($color: #ffffff, $alpha: 0.8);
@@ -93,25 +94,28 @@ export default {
     position: absolute;
     background-color: #fff;
     right: 1rem;
-    top: -1.5rem;
+    top: -2rem;
     padding: 0.4rem 1rem;
+    @include media('max', 'md') {
+      top: -8.5rem;
+    }
   }
   &__window {
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
     grid-auto-flow: row;
     grid-auto-columns: minmax(300px, 350px);
     grid-gap: 1rem;
-    @media (max-width: 1280px) {
-      grid-template-columns: repeat(3, minmax(280px, 350px));
-    }
-    @media (max-width: 960px) {
-      grid-template-columns: repeat(2, minmax(280px, 350px));
-    }
-    @media (max-width: 680px) {
-      grid-template-columns: repeat(1, minmax(280px, 350px));
-    }
+    // @include media('max', 'md') {
+    //   grid-template-columns: repeat(3, minmax(280px, 350px));
+    // }
+    // @include media('max', 'md') {
+    //   grid-template-columns: repeat(2, minmax(280px, 350px));
+    // }
+    // @include media('max', 'md') {
+    //   grid-template-columns: repeat(1, minmax(280px, 350px));
+    // }
   }
 }
 </style>

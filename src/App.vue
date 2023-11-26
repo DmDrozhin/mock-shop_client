@@ -14,46 +14,73 @@
     
     <header>
       <!-- <<<<<<<<<<< TITLE RAW -->
-      <div class="app__title flex-wrapper">
-        <ui-main-icon :size="100"></ui-main-icon>
-        <h1>{{ title }}</h1>
+      <div class="app__title title flex-wrapper">
+        <ui-main-icon 
+          :size="mainIcon.size"
+          :viewBox="mainIcon.viewBox"
+          class="title__main-icon"
+        ></ui-main-icon>
+        <h1 class="title__text">{{ title }}</h1>
       </div>
 
-      <div class="header flex-wrapper">
-        <nav class="header__nav-menu nav-menu">
-          <div class="nav-menu__button">
-            <ui-menu-button
-              :linkTo="'products'"
-              :title="'products'"
-              :data="false"
-              :status="true"
-            ></ui-menu-button>
-          </div>
-        
-          <div class="nav-menu__button">
-            <ui-menu-button
-              :linkTo="'cart'"
-              :title="'cart'"
-              :data="CART_PRODS_QT > 0 ? CART_PRODS_QT : false"
-              :status="CART_PRODS_QT > 0"
-            ></ui-menu-button>
-          </div>
-        
-          <div class="nav-menu__button">
-            <ui-menu-button
-              :linkTo="'order'"
-              :title="'order'"
-              :data="ORDER.length > 0 ? ORDER.length : false"
-              :status="ORDER.length > 0"
-            ></ui-menu-button>
-          </div>
-          <div class="nav-menu__button database-icon-wrapper">
-            <ui-database-icon
-              class="database-icon"
-              :size="60"
-            ></ui-database-icon>
-          </div>
-        </nav>
+      <div class="app__header header flex-wrapper">
+        <div 
+          class="header__nav-burger"
+          v-if="isMobile"
+        >
+          <ui-nav-burger
+            class="header__ui-nav-burger"
+            :isActive="flagNAV"
+            :size="60"
+            :color="'#fff'"
+            :viewBox="'0 0 16 16'"
+            @clickBurger="(toggleNAV())"
+          ></ui-nav-burger>
+        </div>
+
+        <transition name="nav-menu">
+          <nav 
+            class="header__nav-menu nav-menu"
+            v-if="flagNAV"
+          >
+            <div class="nav-menu__button">
+              <ui-menu-button
+                :linkTo="'products'"
+                :title="'products'"
+                :data="false"
+                :status="true"
+                :isMobile="isMobile"
+              ></ui-menu-button>
+            </div>
+          
+            <div class="nav-menu__button">
+              <ui-menu-button
+                :linkTo="'cart'"
+                :title="'cart'"
+                :data="CART_PRODS_QT > 0 ? CART_PRODS_QT : false"
+                :status="CART_PRODS_QT > 0"
+                :isMobile="isMobile"
+              ></ui-menu-button>
+            </div>
+          
+            <div class="nav-menu__button">
+              <ui-menu-button
+                :linkTo="'order'"
+                :title="'order'"
+                :data="ORDER.length > 0 ? ORDER.length : false"
+                :status="ORDER.length > 0"
+                :isMobile="isMobile"
+              ></ui-menu-button>
+            </div>
+            <div class="nav-menu__button nav-menu__nav-icon nav-icon">
+              <ui-database-icon
+                class="nav-icon__icon"
+                :size="60"
+              ></ui-database-icon>
+            </div>
+          </nav>
+        </transition>
+
         <hr class="hr1 header__hr1">
       </div>
 
@@ -70,6 +97,8 @@
       </div> -->      
     </main>
 
+
+
     <footer>
       <div class="footer">
         <hr class="hr3 footer__hr">
@@ -83,42 +112,52 @@
 <script>
 import uiMenuButton from '@/components/UI/ui-menu-button.vue'
 import uiModalWind from '@/components/UI/ui-modal-wind.vue'
+import uiNavBurger from '@/components/UI/ui-nav-burger.vue'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'app',
-  components:{ uiMenuButton, uiModalWind },
+  components:{ uiMenuButton, uiModalWind, uiNavBurger },
   data () {
     return {
       title: 'sport clothes mock shop',
-      isMobile: false
+      screen: '',
+      mainIcon: { size: 120, viewBox: '0 0 1024 1024' },
+      flagNAV: false
     }
   },
   mixins: [console],
   methods: {
-    ...mapActions (['GET_PRODS_FM_SERVER', 'SET_MOBILE'])
+    ...mapActions (['GET_PRODS_FM_SERVER', 'SET_SCREEN']),
+
+    toggleNAV() { this.flagNAV = !this.flagNAV }
   },
   computed: {
-    ...mapGetters(['CART_PRODS_QT', 'ORDER', 'IS_LOADER', 'MODAL']),
+    ...mapGetters(['CART_PRODS_QT', 'ORDER', 'IS_LOADER', 'MODAL', 'SCREEN']),
     showQt () { return this.CART_PRODS_QT > 0 },
-    modalActive() { return this.MODAL.isBaseActive ? 'hidden' : 'auto' }
+    modalActive() { return this.MODAL.isBaseActive ? 'hidden' : 'auto' },
+    isMobile() { return this.SCREEN === 'sm' || this.SCREEN === 'md' ? true : false },
+    // isTablet() { return this.SCREEN === 'lg' ? true : false },
+    // isDeskTop() { return this.SCREEN === 'xl' || this.SCREEN === 'xxl' ? true : false },
+    
   },
   watch: {
-    isMobile (val) { this.SET_MOBILE(val) }
+    SCREEN(scr) {
+      if (scr === 'sm' || scr === 'md') {
+        this.mainIcon.size = 100
+        this.mainIcon.viewBox = '100 100 850 850'
+      }
+    },
+    isMobile(val) { !val ? this.flagNAV = true : this.flagNAV = false }
   },
-  beforeMount() {
-    let screen = window.innerWidth
-    if (screen < 768) { this.isMobile = true }
-  },
-  // beforeMount() {
-  //   this.GET_PRODS_FM_SERVER()
-  // },
+
   mounted () {
     this.GET_PRODS_FM_SERVER()
 
     this.$nextTick(window.addEventListener('resize', () => {
-      window.innerWidth < 768 ? this.isMobile = true : this.isMobile = false
+      this.SET_SCREEN(window.innerWidth)
     }))
   },
+
   onBeforeUnmount () {
     window.removeEventListener('resize')
   }
@@ -127,8 +166,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@import '../src/styles/variables';
-
+@import '../src/styles/styles.scss';
 .app {
   z-index: 0;
   padding: 0 1rem;
@@ -137,6 +175,106 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   scrollbar-gutter: stable;
+  &__loader-block {
+    $loader-size: 5rem;
+    position: absolute;
+    width: $loader-size;
+    height: $loader-size;
+    right: 3rem;
+    top: 3rem;
+  }
+  &__title, .title {
+    position: relative;
+    justify-content: space-between;
+    margin: 1rem 0;
+    gap: 1rem;
+    // &__main-icon {}
+    &__text {
+      flex: 1 0 auto;
+    }
+
+    @include media('max', 'lg') {
+      &__text {
+        font-size: 2.5rem;
+        letter-spacing: 1.8px;
+      }
+    }
+    @include media('max', 'md') {
+      flex-direction: column;
+      gap: 0.5rem;
+      // &__main-icon {}
+      &__text {        
+        // font-size: 1.6rem;
+        // letter-spacing: 1.4px;
+        align-self: center;
+        // align-self: flex-end;
+
+      }
+    }
+    @include media('max', 'sm') {
+      &__text {
+        font-size: 2.2rem;
+        letter-spacing: 1.2px;
+        text-wrap: pretty;
+      }
+    }
+  }
+  &__header, .header {
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    @include media('max', 'md') {
+      justify-content: center;
+    }
+    &__nav-burger {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    } 
+    @include media('min', 'md') {
+      display: block;
+    }
+    &__nav-menu,
+    .nav-menu {
+      flex: 0 1 fit-content;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      @include media('max', 'md') {
+        flex-direction: column;
+        // justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+      }
+      // &__button {
+
+      // }
+      &__nav-icon, .nav-icon {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: '';
+          width: 71px;
+          height: 80px;
+          border-radius: 50%;
+          top: -10px;
+          left: -12px;
+          background-color: rgb(255, 255, 255);
+          z-index: -1;
+        }
+      }
+    }
+    &__hr1 {
+      flex: 1 1 35%;
+      @include media('max', 'lg') {
+        display: none;
+      }
+    }
+  }
+  .main-wrapper {
+    transition: all 0.5s ease;
+  }
+// GENERAL BLOCKS
   header {
     z-index: 10;
     flex: 0 1 auto;
@@ -153,84 +291,30 @@ export default {
         margin-bottom: 1rem;
       }
     }
-
   }
-  &__loader-block {
-    $loader : 5rem;
-    position: absolute;
-    width: $loader;
-    height: $loader;
-    right: 3rem;
-    top: 3rem;
-    @media (max-width: 980px) {
-      top: 3rem
-    }
-    @media (max-width: 580px) {
-      top: 10rem
-    }
-  }
-  &__title {
-    position: relative;
-    justify-content: center;
-    margin: 0 0 2rem 0;
-    img {
-      height: 3rem;
-      @media (max-width: 580px) {
-        height: 4rem;
-      }
-    }
-    h1 {
-      margin-left: 1rem;
-      @media (max-width: 580px) {
-        font-size: 2rem;
-        line-height: 4rem;
-      }
-    }
-    // &__notice-wrapper {
-    // }
-  }
-
-  .header {
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    @media (max-width: 580px) {
-      justify-content: center;
-    }
-
-    &__nav-menu,
-    .nav-menu {
-      flex: 0 1 fit-content;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      @media (max-width: 580px) {
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-      }
-      .database-icon-wrapper {
-        position: relative;
-      }
-      // .database-icon-wrapper::before {
-      //   position: absolute;
-      //   content: '';
-      //   width: 71px;
-      //   height: 80px;
-      //   border-radius: 50%;
-      //   top: -10px;
-      //   left: -12px;
-      //   background-color: yellow;
-      //   z-index: -1;
-      // }
-    }
-    &__hr1 {
-      flex: 1 1 35%;
-      @media (max-width: 580px) {
-        flex-basis: 100%;
-      }
-    }
-  }
-
+  // MEDIA REQUESTS
+  
+  
 }
+
+// TRANSITION
+
+// NAV MENU
+.nav-menu-enter-active {
+  transition: transform 0.5s ease, opacity 0.5s ease-in;
+}
+.nav-menu-leave-active {
+  transition: transform 0.5s ease, opacity 0.5s ease-out;
+}
+// CORRECT CLASS FOR ENTER IS "enter" !!!!! Vue 2
+.nav-menu-enter,
+.nav-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-5rem);
+}
+
+
+// MAIN WRAPPER
+
+
 </style>
