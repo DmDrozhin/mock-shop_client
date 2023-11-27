@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/styles.scss';
   .head-filters {
     display: flex;
     justify-content: flex-end;
@@ -60,9 +61,10 @@ export default {
       left: 8px;
       content: 'by size';
       text-transform: uppercase;
-      color: #fff;
+      color: #000;
       font-weight: 600;
       letter-spacing: 1.1px;
+      text-shadow: 1px 1px 1px #fff;
     }
   }
 

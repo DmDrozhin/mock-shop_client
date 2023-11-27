@@ -283,7 +283,7 @@ export default {
   .main-wrapper, 
   .main {
     &__view {
-      padding: 1rem;
+      padding: 1rem 1rem 3rem 1rem;
     }
   }
 // GENERAL BLOCKS
@@ -301,6 +301,10 @@ export default {
       &__text {
         text-align: center;
         margin-bottom: 1rem;
+        color: #000000;
+        font-weight: 600;
+        font-size: 1.3rem;
+        // text-shadow: 1px 1px 3px rgb(47, 47, 47);
       }
     }
   }

@@ -14,8 +14,8 @@
             <p>Замовлення - або відправлено - resp.status === 201, або не відправлено</p>
             <p>Надалі повертаємось до вибору товарів або пропонуємо upsales</p>
           </div>
-          <div class="finally__server-resp" v-if="GET_SERVER_RESP">
-            <h3>Поточна відповідь відправки: <span>{{ GET_SERVER_RESP }}</span></h3>
+          <div class="finally__server-resp">
+            <h3>Поточна відповідь відправки: <span v-if="GET_SERVER_RESP">{{ GET_SERVER_RESP }}</span></h3>
           </div>
         </div>
       
@@ -60,22 +60,17 @@ export  default {
 .v-products-finally,
 .finally {
   background-color: #ffffffc1;
-  height: 100%;
-  /* border: 2px solid teal; */
   padding: 2rem 1rem;
-
+  height: 50vh;
 }
 .finally__wrapper {
-  /* border: 2px solid hotpink; */
-  height: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
 }
 .finally__container {
-
+  flex: 1 0 auto;
 }
 .finally__header {
 
@@ -101,7 +96,7 @@ export  default {
   margin-left: 1rem;
 }
 .finally__footer {
-
+  flex: 0 1 auto;
 }
 
 </style>

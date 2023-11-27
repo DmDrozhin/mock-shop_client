@@ -85,8 +85,11 @@ export default {
   // padding: 1rem 1rem 2rem 1rem;
   position: relative;
   &__title {
+    @include media('max', 'lg') {
+      margin-top: 4rem;
+    }
     @include media('max', 'md') {
-      margin-top: 3rem;
+      margin-top: 4rem;
       font-size: 2.2rem;
     }
   }
@@ -97,18 +100,16 @@ export default {
     top: -2rem;
     padding: 0.4rem 1rem;
     @include media('max', 'lg') {
-      top: -8rem;
-      .head-filters {
-        flex-direction: column;
-      }
-    }
-    @include media('max', 'md') {
-      top: -2rem;
+      top: 0;
       left: 0;
       right: 0;
-      .head-filters {
-        flex-direction: row;
-      }
+      // .head-filters {}
+    }
+    @include media('max', 'md') {
+      top: 0;
+      left: 0;
+      right: 0;
+      // .head-filters {}
     }
   }
   &__window {

@@ -15,7 +15,7 @@ body {
   background-image: url('@/assets/images/main-background.avif');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position: center center;
   background-attachment: fixed;
   // backdrop-filter: blur(2px) grayscale(50%) brightness(50%);
   backdrop-filter: blur(2px) grayscale(50%);
@@ -29,6 +29,7 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: .4rem;
+  text-shadow: 1px 1px 3px #aaa;
 }
 h2 {
   font-size: 2.5rem;
