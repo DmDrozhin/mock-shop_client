@@ -82,10 +82,9 @@ export default {
 .v-products-archive,
 .gallery {
   background-color: rgba($color: #ffffff, $alpha: 0.8);
-  padding: 1rem;
+  // padding: 1rem 1rem 2rem 1rem;
   position: relative;
   &__title {
-    margin-bottom: 1.5rem;
     @include media('max', 'md') {
       margin-top: 3rem;
       font-size: 2.2rem;

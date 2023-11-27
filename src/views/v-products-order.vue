@@ -213,9 +213,7 @@ export  default {
 
 .v-products-order {
   background-color: #fff;
-  padding: 2rem 10rem;
   & h1 {
-    margin-bottom: 2rem;
   }
   @media (max-width: 1280px) {
     padding: 1rem 2rem;
@@ -315,7 +313,6 @@ export  default {
     border-radius: $base-radius;
     .person {
       &__title {
-        margin-bottom: 1rem;
       }
       &__name-wrapper {
         display: flex;

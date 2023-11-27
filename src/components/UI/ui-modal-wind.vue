@@ -1,16 +1,19 @@
 <template>
-  <div class="ui-modal-wind'">
-
+  <div class="ui-modal-wind modal">
+    <transition name="fade">
       <div        
+        class="modal__background"
         v-if="MODAL.isBaseActive"
-        class="base-wrapper"
         :class="{ 'frozen-background': MODAL.isFrozenBg }"
       >
       </div>
+    </transition>
 
-    
-
-      <div v-if="MODAL.isModalActive" class="modal-slide-wind">
+    <transition name="prompt">
+      <div 
+        v-if="MODAL.isModalActive" 
+        class="modal__slide-wind"
+      >
         <ui-modal-wind-item
           :title="MODAL.title"
           :message="MODAL.message"
@@ -19,14 +22,14 @@
           @response="handleResponse($event)"
         ></ui-modal-wind-item>
       </div>
-
-
+    </transition>
+    
   </div>
 </template>
 
 <script>
 // Readme:
-// API GETTER 'MODAL' {
+// API GETTER 'MODAL' OBJ {
 //    id: // message id
 //    isBaseActive: true, // toggle activation of background
 //    isFrozenBg: false, // makes background block wind events
@@ -68,79 +71,73 @@ export default {
 </script>
 
 
-<style scoped>
-body {
-  overflow: hidden!important;
-}
-.ui-modal-wind {
+<style lang="scss" scoped>
+@import '@/styles/styles.scss';
+.ui-modal-wind, .modal {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background-color: #892626;
+  &__background {
+    z-index: 80;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000023;
+  }
+  &__slide-wind {
+    z-index: 90;
+    position: fixed;
+    position: absolute;
+    pointer-events: auto;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 30vw;
+    background-color: #0000007d;
+    @include media('max', 'lg') {
+      width: 40vw;
+    }
+    @include media('max', 'md') {
+      width: 50vw;
+    }
+    @include media('max', 'sm') {
+      width: 100vw;
+    }
+  }
 }
-.base-wrapper {
-  z-index: 80;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #00000023;
-}
-.modal-slide-wind {
-  z-index: 90;
-  position: fixed;
-  /* position: absolute; */
-  pointer-events: auto;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 30%;
-  background-color: #0000007d;
-  /* transform: translateX(0); */
-}
+// ADD STYLES
 .frozen-background {
+  scrollbar-gutter: stable;
   pointer-events: auto;
   z-index: 80;
   background-color: #00000081;
   scroll-behavior: smooth;
 }
-/* TRANSITION BASE */
-.base-enter-active {
-  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+/* TRANSITION BACK-GROUND */
+.fade-enter-active {
+	transition: opacity .3s ease;
 }
-.base-leave-active {
-  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.fade-leave-active {
+	transition: opacity .3s ease;
+}
+.fade-enter, .fade-bg-leave-to {
+	opacity: 0;
 }
 
-.base-enter-from,
-.base-leave-to {
-  opacity: 0;
-}
-.base-enter-to,
-.base-leave-from {
-  opacity: 1;
-}
 /* TRANSITION MODAL */
-
-.modal-enter-active {
-  transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.prompt-enter-active {
+  transition: transform 0.5s ease;
 }
-.modal-leave-active  {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.prompt-leave-active  {
+  transition: transform 0.5s ease;
 }
-.modal-enter-from,
-.modal-leave-to {
-  transform: translateX(100%);
-
+.prompt-enter, .prompt-leave-to {
+  transform: scale(0);
+  /* transform: translate(30vw); */
 }
-.modal-enter-to,
-.modal-leave-from {
-  transform: translateX(0);
-}
-/* .modal-move{
-  transition: all 1s ease;
-}*/
 </style>

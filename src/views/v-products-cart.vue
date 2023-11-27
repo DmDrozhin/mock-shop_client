@@ -1,8 +1,9 @@
 <template>
-  <div class="v-products-cart">
-    <h2>{{ title }}</h2>
+  <div class="v-products-cart cart">
 
-    <div class="cart-items">
+    <h2 class="cart__title">{{ title }}</h2>
+
+    <div class="cart__items">
       <cartItem 
         v-for="(item, idx) in CART"
         :key="idx"
@@ -14,8 +15,8 @@
       </cartItem>
     </div>
     <!-- <<<<< SUMMARY >>>>>> -->
-    <div class="cart-summary" v-if="CART_PRODS_QT">
-      <div class="cart-summary part1">
+    <div class="cart__summary summary" v-if="CART_PRODS_QT">
+      <div class="summary__part1 part1">
         <div class="part1__prod-qt">
         <ui-text-info
           :num="CART_PRODS_QT"
@@ -44,7 +45,7 @@
 
       </div>
 
-      <div class="part2">
+      <div class="summary__part2 part2">
         <ui-order-button
           class="part2__order-button"        
           :icon="'shopping_bag'"
@@ -151,23 +152,18 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
-
-.v-products-cart {
-  background-color: rgba($color: #ffffff, $alpha: 0.8);
+.v-products-cart, 
+.cart {
+  background-color: rgba($color: #fff, $alpha: 0.8);
   padding-bottom: 2rem;
-  & h1 {
-    margin: 0 0 2rem 0;
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-    }
+  &__title {
   }
-  .notice-block {
-    min-height: 50vh;
-    display: grid;
-    place-content: center;
+  &__items {
+
   }
-  .cart-summary {
-    max-width: 80vw;
+
+  &__summary, .summary {
+    // max-width: 80vw;
     margin: 0 auto;
     border: 1px dotted $salad-fnt;
     background-color: #fff;
@@ -176,7 +172,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    &__part1-wrapper, 
+    &__part1, 
     .part1 {
       display: flex;
       justify-content: space-between;
@@ -197,63 +193,12 @@ export default {
       // }
 
     }
+    &__part2, 
     .part2 {
       &__order-button {
         flex: 0 1 25%;
         justify-content: flex-end;
         // background-color: #ccacac;
-      }
-    }
-
-    @media (max-width: 1280px) {
-    max-width: 90vw;
-      h2 {
-        font-size: 1rem;
-      }
-    }
-    @media (max-width: 980px) {
-      padding: 0.5rem 1rem;
-      max-width: 95vw;
-    }
-    @media (max-width: 768px) {
-      padding: 0.5rem 0.5rem;
-      h1 {
-        font-size: .7rem;
-      }
-      flex-wrap: wrap;
-      &__prod-qt {
-        flex: 1 0 25%;
-        text-align: left;
-      }
-      &__unit-qt {
-        flex: 1 0 25%;
-        text-align: center;
-      }
-      &__total-sum {
-        flex: 1 0 40%;
-        text-align: right;
-      }
-      &__button {
-        flex: 1 0 100%;
-        .button {
-          justify-content: center;
-        }
-      }
-    }
-    @media (max-width: 580px) {
-      padding: 0.5rem 0.5rem;
-      flex-wrap: wrap;
-      gap: 0;
-      // &__prod-qt {
-      // }
-      // &__unit-qt {
-      // }
-      // &__total-sum {
-      // }
-      &__button {
-        margin-top: 1.5rem;
-        padding: 1.5rem 0;
-        border-top: 1px dotted grey;
       }
     }
   }

@@ -88,8 +88,8 @@
     </header>
 
     <main>
-      <div class="main-wrapper">
-        <router-view></router-view>
+      <div class="main-wrapper main">
+        <router-view class="main__view"></router-view>
       </div>
       <!-- <div class="main-wrapper">
         <keep-alive>
@@ -157,6 +157,7 @@ export default {
     this.$nextTick(window.addEventListener('resize', () => {
       this.SET_SCREEN(window.innerWidth)
     }))
+    this.SET_SCREEN(window.innerWidth)
   },
 
   onBeforeUnmount () {
@@ -169,9 +170,9 @@ export default {
 
 @import '../src/styles/styles.scss';
 .app {
-  z-index: 0;
   padding: 0 1rem;
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -257,6 +258,7 @@ export default {
 
       // }
       &__nav-icon, .nav-icon {
+        margin-left: 1rem;;
         position: relative;
         &::before {
           position: absolute;
@@ -278,8 +280,11 @@ export default {
       }
     }
   }
-  .main-wrapper {
-    transition: all 0.5s ease;
+  .main-wrapper, 
+  .main {
+    &__view {
+      padding: 1rem;
+    }
   }
 // GENERAL BLOCKS
   header {

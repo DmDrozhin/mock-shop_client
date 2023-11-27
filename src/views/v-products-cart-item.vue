@@ -144,23 +144,9 @@ export default {
 @import '@/styles/variables.scss';
 
 .v-products-cart-item {
-  max-width: 80vw;
+  // max-width: 80vw;
   margin: 0 auto;
-  @media (max-width: 1280px) {
-    max-width: 90vw;
-    h2 {
-      font-size: 1rem;
-    }
-  }
-  @media (max-width: 980px) {
-    max-width: 95vw;
-  }
-  @media (max-width: 768px) {
-    max-width: 100;
-    h1 {
-      font-size: .7rem;
-    }
-  }
+
   .item {
     display: grid;
     place-items: center;
@@ -204,34 +190,6 @@ export default {
       }
     }
     // &__del-btn {}
-
-    @media (max-width: 1280px) {
-
-    }
-    @media (max-width: 980px) {
-      padding: 0.5rem 1rem;
-      &__size {
-        flex-direction: column;
-      }
-
-      // &__qt-selector {}
-      // &__selector {}
-      // &__sum-block {}
-      // &__del-btn {}
-    }
-    @media (max-width: 768px) {
-      padding: 0.5rem;
-      grid-template-columns: repeat(5, auto);
-      &__prod-id {
-        grid-row: 1 / span 2;
-      }
-      &__qt-control {
-        grid-column: 2 / -1;
-        justify-content: space-evenly;
-        border: 1px solid rgb(222, 222, 222);
-        justify-self: stretch;
-      }
-    }
   }
 }
 </style>
