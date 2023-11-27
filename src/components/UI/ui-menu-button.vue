@@ -80,6 +80,15 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+    @include media('max', 'md') {
+      height: 4rem;
+      width: 20rem;
+    }
+  }
+  &__title {
+    @include media('max', 'md') {
+      font-size: 2rem;
+    }
   }
   &__link:hover::after {
     content: '';

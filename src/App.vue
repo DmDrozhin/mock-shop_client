@@ -43,8 +43,9 @@
               class="header__nav-menu nav-menu"
               v-if="flagNAV"
             >
-              <div class="nav-menu__button">
+              <div class="nav-menu__btn-wrapper btn-comp-ui">
                 <ui-menu-button
+                  class="btn-comp-ui__ui-btn"
                   :linkTo="'products'"
                   :title="'products'"
                   :data="false"
@@ -53,8 +54,9 @@
                 ></ui-menu-button>
               </div>
             
-              <div class="nav-menu__button">
+              <div class="nav-menu__btn-wrapper btn-comp-ui">
                 <ui-menu-button
+                  class="btn-comp-ui__ui-btn"
                   :linkTo="'cart'"
                   :title="'cart'"
                   :data="CART_PRODS_QT > 0 ? CART_PRODS_QT : false"
@@ -63,8 +65,9 @@
                 ></ui-menu-button>
               </div>
             
-              <div class="nav-menu__button">
+              <div class="nav-menu__btn-wrapper btn-comp-ui">
                 <ui-menu-button
+                  class="btn-comp-ui__ui-btn"
                   :linkTo="'order'"
                   :title="'order'"
                   :data="ORDER.length > 0 ? ORDER.length : false"
@@ -253,10 +256,15 @@ export default {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
+        // &__btn-wrapper, .btn-comp-ui {
+        //   &__ui-btn .nav-btn__link[data-v-3b4291a2] {
+        //     background-color: #8556c6;
+        //     border: 2px solid goldenrod;
+        //     width: 15rem;
+        //   }
+        // }
       }
-      // &__button {
-
-      // }
+      // &__button {}
       &__nav-icon, .nav-icon {
         margin-left: 1rem;;
         position: relative;
