@@ -13,7 +13,7 @@
     <span
       class="ui-price-info__num"
       :class="{'ui-price-info__num-inline': !isVertical}"
-      :style="{'font-size': fontSz + 'rem'}"
+      :style="{'font-size': fontSz + 'rem', 'width': room + 'rem'}"
     >
       {{ price | toAccFormat }}
     </span>
@@ -31,13 +31,16 @@
 // :fontSz="1.5"
 // :label="'text'"
 // isVertical="true"
+// :room="6"
 export default {
   name: 'ui-price-info',
   props: { 
     price: { type: Number, default: 0, },
     fontSz: { type: Number, default: 14 },
     label: { type: String, default: '' },
-    isVertical: { type: Boolean, default: true} // could be raw
+    isVertical: { type: Boolean, default: true},
+    room: { type: Number, default: 6 },
+     // could be raw
   },
 }
 </script>
@@ -48,11 +51,11 @@ export default {
   flex-direction: column;
   color: rgb(16, 108, 112);
   font-weight: 600;
-  min-width: 100%;
+  /* min-width: 100%; */
 }
 .ui-price-info-inline {
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   gap: 0.5rem;
 }
@@ -71,13 +74,13 @@ export default {
 }
 .ui-price-info__num-inline {
   margin-bottom: 0rem;
-  text-align: center;
+  text-align: right;
 }
 .ui-price-info__txt {
   color: rgb(53, 53, 53);
   text-align: right;
 }
 .ui-price-info__txt-inline {
-  text-align: left;
+  text-align: right;
 }
 </style>

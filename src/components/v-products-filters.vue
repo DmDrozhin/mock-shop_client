@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      title: 'display options:',
+      title: 'display:',
       size: 'all'
     }
   },
@@ -51,20 +51,32 @@ export default {
     gap: 1.5rem;
     &__title {
       align-self: flex-end;
+      font-weight: 600;
+      letter-spacing: 1.2px;
     }
     &__size-filter {
       // flex-basis: 70px;
       width: 75px;
+      position: relative;
     }
     &__size-filter.select::before {
-      top: -25px;
-      left: 8px;
       content: 'by size';
-      text-transform: uppercase;
+      position: absolute;
+      display: block;
+      width: 75px;
+      height: 30px;
+      top: -40px;
+      left: 0px;
+
+      // text-transform: uppercase;
+      text-transform: capitalize;
+      text-align: center;
       color: #000;
       font-weight: 600;
       letter-spacing: 1.1px;
-      text-shadow: 1px 1px 1px #fff;
+      line-height: 30px;
+      background-color: #fff;
+      
     }
   }
 

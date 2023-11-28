@@ -74,18 +74,13 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/styles.scss';
 .ui-modal-wind, .modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
   &__background {
     z-index: 80;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: #00000023;
   }
   &__slide-wind {
@@ -95,17 +90,17 @@ export default {
     pointer-events: auto;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 30vw;
+    height: 100%;
+    width: 30%;
     background-color: #0000007d;
     @include media('max', 'lg') {
-      width: 40vw;
+      width: 40%;
     }
     @include media('max', 'md') {
-      width: 50vw;
+      width: 50%;
     }
     @include media('max', 'sm') {
-      width: 100vw;
+      width: 100%;
     }
   }
 }

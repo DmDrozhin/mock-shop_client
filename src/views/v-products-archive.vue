@@ -97,7 +97,7 @@ export default {
     position: absolute;
     background-color: #fff;
     right: 1rem;
-    top: -2rem;
+    top: -1rem;
     padding: 0.4rem 1rem;
     @include media('max', 'lg') {
       top: 0;

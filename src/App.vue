@@ -90,24 +90,16 @@
 
     </header>
 
-    <main>
-      <div class="main-wrapper main">
-        <router-view class="main__view"></router-view>
-      </div>
-      <!-- <div class="main-wrapper">
-        <keep-alive>
+    <main class="main">
+      <router-view class="main__view"></router-view>
+        <!-- <keep-alive>
           <router-view></router-view>
-        </keep-alive>
-      </div> -->      
+        </keep-alive> -->
     </main>
 
-
-
-    <footer>
-      <div class="footer">
-        <hr class="hr3 footer__hr">
-        <p class="footer__text">All rights reserved ®</p>
-      </div>
+    <footer class="footer">
+      <hr class="hr3 footer__hr">
+      <p class="footer__text">All rights reserved ®</p>
     </footer>
 
   </div>
@@ -175,7 +167,7 @@ export default {
 .app {
   padding: 0 1rem;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -288,20 +280,22 @@ export default {
       }
     }
   }
-  .main-wrapper, 
   .main {
+    // height: 100%;
     &__view {
+      height: 100%;
       padding: 1rem 1rem 3rem 1rem;
     }
   }
 // GENERAL BLOCKS
   header {
-    z-index: 10;
+    // z-index: 10;
     flex: 0 1 auto;
   }
   main {
     flex: 1 1 auto;
     margin-bottom: 2rem;
+    // border: 5px solid navy;
   }
   footer {
     flex: 0 1 auto;
@@ -312,7 +306,6 @@ export default {
         color: #000000;
         font-weight: 600;
         font-size: 1.3rem;
-        // text-shadow: 1px 1px 3px rgb(47, 47, 47);
       }
     }
   }

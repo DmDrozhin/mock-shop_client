@@ -11,36 +11,6 @@ $dark-grey-txt: #424242;
 $icon-color: #b2d6b6;
 $acc-txt-color: #106c70;
 
-@mixin up-arr-btn {
-  appearance: none;
-  border-style: none;
-  display: block;
-  background-color: transparent;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 12px solid rgb(178, 214, 182);
-  &:disabled {
-    border-bottom: 12px solid rgb(196, 196, 196);
-  }
-}
-
-@mixin down-arr-btn {
-  appearance: none;
-  border-style: none;
-  display: block;
-  background-color: transparent;
-  width: 0; 
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 12px solid rgb(178, 214, 182);
-  &:disabled {
-    border-top: 12px solid rgb(196, 196, 196);
-  }
-}
-
 @mixin prod-card-side2-block {
   display: flex;
   flex-direction: column;
@@ -49,6 +19,7 @@ $acc-txt-color: #106c70;
   gap: 1rem;
   min-width: 100%;
 }
+
 
 $retina-resolution: 192dpi;
 
@@ -61,5 +32,33 @@ $sizes: ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1280px);
         @content;
       }
     }
+  }
+}
+
+@mixin cart-item-divider {
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  gap: 2rem;
+
+  // @media (max-width: 1100px) {
+  //   gap: 1rem;
+  //   background-color: #e7baba;
+  // }
+  @include media('max', 'lg') {
+
+    // background-color: #e7cccc;
+  }
+  @include media('max', 'md') {
+    
+    // background-color: #b9efb4;
+  }
+  @include media('max', 'sm') {
+    
+    // background-color: #e8efb4;
+  }
+  @include media('max', 'xs') {
+    
+    // background-color: #ffffff;
   }
 }

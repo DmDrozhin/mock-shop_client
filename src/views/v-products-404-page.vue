@@ -2,10 +2,7 @@
   <div class="ui-404-page">
     <div class="warn-block flex-wrapper">
       <h1>{{ title | toUpp }}</h1>
-      <div class="warn-block__notice">
-        <ui-notice-block :notice="'notFoundPage'">
-        </ui-notice-block>
-      </div>
+      <h1>{{ message | toUpp }}</h1>
     </div>
   </div>
 </template>
@@ -15,7 +12,8 @@ import toUpp from '@/filters/toUpperCase'
 export default {
   data () {
     return {
-      title: 'ERROR 404!'
+      title: 'ERROR 404!',
+      message: 'сторінка не знайдена'
     }
   },
   filters: {

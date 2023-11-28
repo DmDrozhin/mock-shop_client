@@ -11,37 +11,38 @@
         :idx="idx"
         @updateCart="updateCart($event)"
         @deleteItem="deleteItem($event)"
-      >
-      </cartItem>
+      ></cartItem>
     </div>
+
     <!-- <<<<< SUMMARY >>>>>> -->
     <div class="cart__summary summary" v-if="CART_PRODS_QT">
       <div class="summary__part1 part1">
-        <div class="part1__prod-qt">
+
         <ui-text-info
+          class="part1__prod-qt"
           :num="CART_PRODS_QT"
           :fontSz="1.5"
-          :label1="'Товарів'"
+          :label1="'Товарів:'"
+          :room="1"
         ></ui-text-info>
-      </div>
-      <div class="part1__unit-qt">
+
         <ui-text-info
-          class="unit-qt__ui-text-info"
+          class="part1__unit-qt"
           :num="CART_QT"
           :fontSz="1.5"
-          :label1="'Кількість'"
+          :label1="'Кількість:'"
           :label2="'шт.'"
+          :room="1.5"
         ></ui-text-info>
-      </div>
-      <div class="part1__total-sum">
+
         <ui-price-info
-          class="part1__ui-price-info"
+          class="part1__total-sum"
           :price="CART_SUM"
-          :fontSz="1.5"
+          :fontSz="1.8"
           :label="'Сума замовлення:'"
           :isVertical="false"
+          :room="8"
         ></ui-price-info>
-      </div>
 
       </div>
 
@@ -155,50 +156,49 @@ export default {
 .v-products-cart, 
 .cart {
   background-color: rgba($color: #fff, $alpha: 0.8);
-  padding-bottom: 2rem;
-  &__title {
-  }
-  &__items {
-
-  }
+  // &__title {}
+  // &__items {}
 
   &__summary, .summary {
-    // max-width: 80vw;
-    margin: 0 auto;
     border: 1px dotted $salad-fnt;
     background-color: #fff;
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    @include media('max', 'md') {
+      // background-color: #b9efb4;
+      flex-direction: column;
+      padding: 2rem 0.5rem;
+      align-items: stretch;
+      gap: 3rem;
+    }
     &__part1, 
     .part1 {
+      flex: 1 1 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
-      flex-grow: 1;
       gap: 1rem;
-      &__prod-qt {
-        flex: 1 1 30%;
+      // &__prod-qt {}
+      // &__unit-qt {}
+      // &__total-sum {}
+      // &__ui-price-info {}
+      @include media('max', 'sm') {
+        // background-color: #e8efb4;
+        flex-direction: column;
+        align-items: flex-start;
       }
-      &__unit-qt {
-        flex: 1 1 30%;
-      }
-      &__total-sum {
-        flex: 1 1 40%;
-      }
-      // &__ui-price-info {
-
-      // }
-
     }
     &__part2, 
     .part2 {
+      @include media('max', 'md') {
+          align-self: center;
+      }
       &__order-button {
-        flex: 0 1 25%;
+        flex: 0 0 25%;
         justify-content: flex-end;
-        // background-color: #ccacac;
       }
     }
   }

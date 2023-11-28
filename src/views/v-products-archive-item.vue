@@ -63,6 +63,7 @@
             :label2="undefined"
             :num="instockQt"
             :fontSz="1.2"
+            :room="0.5"
           ></ui-text-info>
           <ui-text-info
             class="info-details__gender"
@@ -70,6 +71,7 @@
             :label2="undefined"
             :num="undefined"
             :fontSz="0.8"
+            :room="1"
           ></ui-text-info>
           <ui-text-info
             class="info-details__article"
@@ -77,6 +79,7 @@
             :label2="undefined"
             :num="product.article"
             :fontSz="1.2"
+            :room="1"
           ></ui-text-info>
         </div>
       </div>
@@ -88,6 +91,7 @@
           :price="product.price"
           :fontSz="2"
           :isVertical="true"
+          :room="8"
         ></ui-price-info>
       </div>
       <!--*** BUTTON BLOCK ***-->
@@ -145,7 +149,7 @@ export default {
     },
     // returns quantity of prod. of currently picked size
     instockQt () {
-      if (this.currentSize === '-') return 0
+      if (this.currentSize === '-') return ''
       else return this.instockArr.find(el => el.sz === this.currentSize).qt
     },
 
