@@ -202,17 +202,13 @@ export default {
       gap: 0.5rem;
       // &__main-icon {}
       &__text {        
-        // font-size: 1.6rem;
-        // letter-spacing: 1.4px;
         align-self: center;
-        // align-self: flex-end;
-
       }
     }
     @include media('max', 'sm') {
       &__text {
         font-size: 2.2rem;
-        letter-spacing: 1.2px;
+        letter-spacing: .35rem;
         text-wrap: pretty;
       }
     }

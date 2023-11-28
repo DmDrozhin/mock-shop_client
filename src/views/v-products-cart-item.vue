@@ -170,6 +170,7 @@ export default {
   flex-wrap: wrap;
   @include media('max', 'md') {
     align-items: stretch;
+    justify-content: space-between;
   }
   @include media('max', 'sm') {
     padding: 0.5rem 0.5rem;
@@ -178,11 +179,15 @@ export default {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    @include media('max', 'sm') {
+      top: 0.2rem;
+      right: 0.2rem;
+    }
   }
   &__tech-data {
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
   }
 
   // DIVIDER-1
@@ -254,26 +259,20 @@ export default {
     min-width: 6rem;
     padding: 0.5rem;
     align-self: center;
-    align-self: center;
     flex: 1 0 auto;
-    @include media('max', 'md') {
-      align-self: flex-start;
-      // align-items: center;
+    @include media('max', 'lg') {
+      align-self: flex-start; // don't switch off
     }
-    .ui-price-info__num-inline {
-      width: 6rem;
-      background-color: #891d1d;
-    }
-    // .ui-price-info {
-    //   min-width: 7rem;
-    //   border: 1px solid $green-btn;
-    //   border-radius: $base-radius;
-    //   // background-color: #d5b5b5;
-    // }
+
   }
   // DIVIDER-3
   &__divider3 {    
     @include cart-item-divider;
+    @include media('max', 'sm') {
+      display: block;
+      margin-left: auto;
+      margin-right: 1rem;
+    }
   }
   // &__qr-selector {}
 
@@ -284,6 +283,7 @@ export default {
 
   @include media('max', 'lg') {}
   @include media('max', 'md') {}
+  @include media('max', 'sm') {}
   
 }
 </style>
