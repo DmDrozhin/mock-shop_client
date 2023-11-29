@@ -197,14 +197,14 @@ export default {
     }
     @include media('max', 'sm') {
       left: 1rem;
-      top: 1rem;
+      top: 0rem;
     }
   }
   &__title {
     position: relative;
     margin: 5rem 10rem;
     @include media('max', 'sm') {
-      margin: 6rem 5rem;
+      margin: 9rem 5rem 7rem 5rem;
     }
   }
   &__loader-block {
