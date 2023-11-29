@@ -11,6 +11,20 @@
     <div class="app__loader-block">
       <ui-loader v-if="IS_LOADER"></ui-loader>
     </div>
+        <!-- <<<<<<<<<<< BURGER -->
+    <div 
+      class="app__nav-burger"
+      v-if="isMobile"
+    >
+      <ui-nav-burger
+        class="app__ui-nav-burger"
+        :isActive="flagNAV"
+        :size="60"
+        :color="'#fff'"
+        :viewBox="'0 0 16 16'"
+        @clickBurger="(toggleNAV())"
+      ></ui-nav-burger>
+    </div>
     
     <header>
       <!-- <<<<<<<<<<< TITLE RAW -->
@@ -24,19 +38,6 @@
       </div>
 
       <div class="app__header header flex-wrapper">
-        <div 
-          class="header__nav-burger"
-          v-if="isMobile"
-        >
-          <ui-nav-burger
-            class="header__ui-nav-burger"
-            :isActive="flagNAV"
-            :size="60"
-            :color="'#fff'"
-            :viewBox="'0 0 16 16'"
-            @clickBurger="(toggleNAV())"
-          ></ui-nav-burger>
-        </div>
         <div class="header__nav-menu-wrapper">
           <transition name="nav-menu">
             <nav 
@@ -118,15 +119,16 @@ export default {
       title: 'sport clothes mock shop',
       screen: '',
       mainIcon: { size: 120, viewBox: '0 0 1024 1024' },
-      flagNAV: false
+      flagNAV: false,
     }
   },
-  mixins: [console],
+
   methods: {
     ...mapActions (['GET_PRODS_FM_SERVER', 'SET_SCREEN']),
 
-    toggleNAV() { this.flagNAV = !this.flagNAV }
+    toggleNAV() { this.flagNAV = !this.flagNAV },
   },
+
   computed: {
     ...mapGetters(['CART_PRODS_QT', 'ORDER', 'IS_LOADER', 'MODAL', 'SCREEN']),
     showQt () { return this.CART_PRODS_QT > 0 },
@@ -166,12 +168,13 @@ export default {
 @import '../src/styles/styles.scss';
 .app {
   padding: 0 1rem;
-  height: 100vh;
-  width: 100%;
+  height: inherit;
+  width: inherit;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   scrollbar-gutter: stable;
+  position: relative;
   &__loader-block {
     $loader-size: 5rem;
     position: absolute;
@@ -180,37 +183,30 @@ export default {
     right: 3rem;
     top: 3rem;
   }
+  &__nav-burger {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+  } 
   &__title, .title {
     position: relative;
     justify-content: space-between;
     margin: 1rem 0;
     gap: 1rem;
-    // &__main-icon {}
-    &__text {
+    &__main-icon {
       flex: 1 0 auto;
     }
-
-    @include media('max', 'lg') {
-      &__text {
-        font-size: 2.5rem;
-        letter-spacing: 1.8px;
-      }
+    &__text {
+      flex: 1 1 auto;
     }
     @include media('max', 'md') {
       margin-bottom: 5rem;
       flex-direction: column;
       gap: 0.5rem;
-      // &__main-icon {}
-      &__text {        
-        align-self: center;
-      }
     }
     @include media('max', 'sm') {
-      &__text {
-        font-size: 2.2rem;
-        letter-spacing: .35rem;
-        text-wrap: pretty;
-      }
+
     }
   }
   &__header, .header {
@@ -226,11 +222,6 @@ export default {
     @include media('max', 'md') {
       justify-content: center;
     }
-    &__nav-burger {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    } 
     @include media('min', 'md') {
       display: block;
     }
@@ -244,13 +235,6 @@ export default {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
-        // &__btn-wrapper, .btn-comp-ui {
-        //   &__ui-btn .nav-btn__link[data-v-3b4291a2] {
-        //     background-color: #8556c6;
-        //     border: 2px solid goldenrod;
-        //     width: 15rem;
-        //   }
-        // }
       }
       // &__button {}
       &__nav-icon, .nav-icon {
@@ -283,7 +267,7 @@ export default {
       padding: 1rem 1rem 3rem 1rem;
     }
   }
-// GENERAL BLOCKS
+// GENERAL STRUCTURE
   header {
     // z-index: 10;
     flex: 0 1 auto;
@@ -293,21 +277,18 @@ export default {
     margin-bottom: 2rem;
     // border: 5px solid navy;
   }
-  footer {
+  footer, 
+  .footer {
     flex: 0 1 auto;
-    .footer{
-      &__text {
-        text-align: center;
-        margin-bottom: 1rem;
-        color: #000000;
-        font-weight: 600;
-        font-size: 1.3rem;
-      }
+    // &__hr {}
+    &__text {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #000000;
+      font-weight: 600;
+      font-size: 1.3rem;
     }
-  }
-  // MEDIA REQUESTS
-  
-  
+  }  
 }
 
 // TRANSITION
@@ -326,8 +307,6 @@ export default {
   transform: translateY(-5rem);
 }
 
-
 // MAIN WRAPPER
-
 
 </style>

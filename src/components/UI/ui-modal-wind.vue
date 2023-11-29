@@ -1,9 +1,12 @@
 <template>
-  <div class="ui-modal-wind modal">
+  <div 
+    class="ui-modal-wind modal" 
+  >
     <transition name="fade">
       <div        
         class="modal__background"
         v-if="MODAL.isBaseActive"
+
         :class="{ 'frozen-background': MODAL.isFrozenBg }"
       >
       </div>
@@ -86,7 +89,6 @@ export default {
   &__slide-wind {
     z-index: 90;
     position: fixed;
-    position: absolute;
     pointer-events: auto;
     top: 0;
     right: 0;

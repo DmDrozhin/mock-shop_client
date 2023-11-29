@@ -4,8 +4,8 @@
     <ui-cancel-button
       class="item__cancel-btn"
       :size="30"
-      :color="'#d86f6f'"  
-      :viewBox="'0 0 32 32'"
+      :color="'#fa7e70'"
+      :viewBox="'0 0 117 117'"
       @cancel="deleteItem()"
     ></ui-cancel-button>
     <div class="item__tech-data">
@@ -41,7 +41,7 @@
           :fontSz="1"
           :label="'Ціна:'"
           :isVertical="false"
-          :room="4"
+          :room="3.7"
         ></ui-price-info>
         <ui-text-info
           class="data__stock"
@@ -168,6 +168,7 @@ export default {
   justify-content: space-evenly;
   // align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
   @include media('max', 'md') {
     align-items: stretch;
     justify-content: space-between;
@@ -179,10 +180,10 @@ export default {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    @include media('max', 'sm') {
-      top: 0.2rem;
-      right: 0.2rem;
-    }
+    // @include media('max', 'sm') {
+    //   top: 0.2rem;
+    //   right: 0.2rem;
+    // }
   }
   &__tech-data {
     position: absolute;
@@ -232,6 +233,9 @@ export default {
       justify-content: space-between;
       gap: 1rem;
     }
+    @include media('max', 'sm') {
+      padding: 0 0 0 1rem;
+    }
   }
 
   &__prod-info, 
@@ -261,6 +265,9 @@ export default {
     align-self: center;
     flex: 1 0 auto;
     @include media('max', 'lg') {
+      align-self: center;
+    }
+    @media (max-width: 910px) {
       align-self: flex-start; // don't switch off
     }
 
@@ -269,9 +276,15 @@ export default {
   &__divider3 {    
     @include cart-item-divider;
     @include media('max', 'sm') {
-      display: block;
-      margin-left: auto;
-      margin-right: 1rem;
+      flex: 1;
+      padding: 0 1rem 0 0;
+      // display: block;
+      // margin-left: auto;
+      // margin-right: 1rem;
+    }
+    @media (max-width: 485px) {
+      justify-content: flex-end;
+      margin-right: 10%;
     }
   }
   // &__qr-selector {}

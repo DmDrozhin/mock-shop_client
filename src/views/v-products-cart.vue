@@ -40,7 +40,7 @@
           :price="CART_SUM"
           :fontSz="1.8"
           :label="'Сума замовлення:'"
-          :isVertical="false"
+          :isVertical="this.$store.state.screen < 420"
           :room="8"
         ></ui-price-info>
 
@@ -180,6 +180,7 @@ export default {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      flex-wrap: wrap;
       gap: 1rem;
       // &__prod-qt {}
       // &__unit-qt {}
@@ -187,8 +188,12 @@ export default {
       // &__ui-price-info {}
       @include media('max', 'sm') {
         // background-color: #e8efb4;
-        flex-direction: column;
-        align-items: flex-start;
+        // flex-direction: column;
+        // align-items: flex-start;
+        &__prod-qt { flex: 1 0 50% }
+        &__unit-qt { flex: 1 }
+        &__total-sum {}
+        &__ui-price-info {}
       }
     }
     &__part2, 

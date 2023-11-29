@@ -43,20 +43,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/styles.scss';
   .order-item {    
     border-bottom: 1px dotted cornflowerblue;
     & td {
-      text-align: center;
+      text-align: right;
       &:last-child {
         text-align: right;
-        padding: 0 1rem 0 0;
       }
     }
-    & td:nth-child(1) {
-      @media (max-width: 768px) {
-        background: rgba(#000000, $alpha: .2);
+    @include media('max', 'sm') {
+      td:nth-child(1) {
+      }
+      td:nth-child(4) {
+        display: none;
+        background: rgba(#9b3a3a, $alpha: .2);
       }
     }
+
     & img {
       height: 5rem;
       width: auto;

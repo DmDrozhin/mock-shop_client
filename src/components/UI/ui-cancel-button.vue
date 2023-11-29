@@ -4,7 +4,8 @@
     <ui-cross-cancel-icon
       class="cancel__icon"
       :size="size"
-      :color="color"
+      :color1="color"
+      :color2="color"
       :viewBox="viewBox"
     ></ui-cross-cancel-icon>
   </div>
@@ -25,7 +26,7 @@ export default {
   props: {
     size: { type: Number, default: 25 },
     color: { type: String, default: '#d86f6f' },
-    viewBox: { type: String, default: '0 0 32 32' },
+    viewBox: { type: String, default: '0 0 117 117' },
     label: { type: String, default: '' },
   },
   methods: {

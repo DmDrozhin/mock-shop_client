@@ -1,34 +1,37 @@
 <template>
-  <div class="v-products-order">
-    <h2>{{ title }}</h2>
+  <div class="v-products-order order">
+    <h2 class="order__title">{{ title }}</h2>
+    <ui-cancel-button
+      class="order__cancel-btn"
+      :size="30"
+      :color="'#fa7e70'"
+      :viewBox="'0 0 117 117'"
+      @cancel="cancelOrder()"
+    ></ui-cancel-button>
 
-    <div class="order-wrapper order">
-      <div class="order">
-        <div class="order__cancel" @click="cancelOrder()">
-          <i class="material-icons">cancel</i>
-        </div>
+    <div class="order__body body">
         <!-- <<<<<<<<<<<<<<<<< ORDER TABLE -->
-        <div class="order__table">
-          <table class="order__order-table">
-            <tr>
-              <th v-for="th in ['№', 'Зображення', 'Найменування', 'Артикль',   'Розмір', 'Кількість', 'Сума']" :key="th.id">{{ th }}</th>
-            </tr>
-            <products-order-item
-              v-for="(prod, idx) in ORDER"
-              :key="prod.id"
-              :prodData ="prod"
-              :idx = "idx"
-              :time="time"
-            >
-            </products-order-item>
-            <tr>
-              <td v-for="td in 5" :key="td.id"></td>
-              <td><span class="total">{{ ORDER_QT }}</span></td>
-              <td><span class="total">{{ ORDER_SUM | toAccFormat }}</span></td>
-            </tr>
-          </table>
-        </div>
-      </div>
+      <table class="body__table table">
+        <tr class="table__head">
+          <th v-for="(thd, idx) in ['№','Зображення','Найменування','Артикль','Розмір','Кількість','Сума']" :key="idx">{{ thd }}</th>
+        </tr>
+        <products-order-item
+          class="table__body"
+          v-for="(prod, idx) in ORDER"
+          :key="prod.id"
+          :prodData ="prod"
+          :idx = "idx"
+          :time="time"
+        >
+        </products-order-item>
+        <tr class="table__footer">
+          <td v-for="td in 5" :key="td.id"></td>
+          <td><span class="total">{{ ORDER_QT }}</span></td>
+          <td><span class="total">{{ ORDER_SUM | toAccFormat }}</span></td>
+        </tr>
+      </table>
+
+
       <!-- <<<<<<<<<<<<<<<<< FORM. PERSON DETAILS -->
       <div class="person-data">
         <div class="person person-data__person">
@@ -136,7 +139,6 @@ export  default {
         address: 'м. Київ, вул. Вишнева, буд. 85, кв. 128' 
       },
       isSentFlag: false,
-      // name: 'Ім\'я <i class="material-icons">person</i>',
       msgID: '',
       modal: {
         // id: '',
@@ -211,98 +213,81 @@ export  default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
-.v-products-order {
+.v-products-order, 
+.order {
   background-color: #fff;
-  & h1 {
+  position: relative;
+  // &__title {}
+  &__cancel-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
-  @media (max-width: 1280px) {
-    padding: 1rem 2rem;
-  }
-  
-  @media (max-width: 980px) {
-    padding: 1rem 0;
-  }
-  @media (max-width: 768px) {
-    padding: 1rem 0;
-    h1 {
-      font-size: 1.5rem;
-    }
-  }
-  
-  .notice-block {
-    min-height: 50vh;
-    display: grid;
-    place-content: center;
-  }
-  .order-wrapper {
-    .order {
-      margin: 0 auto 5rem;
-      &__cancel {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-        i {
-          margin: -1rem 0 1rem 0;
-          cursor: pointer;
-          color: $warn-txt;
+  &__body, 
+  .body {
+    &__table, 
+    .table {
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      &__head {
+        line-height: 2rem;
+        border-top: 1px dotted cornflowerblue;
+        border-bottom: 1px dotted cornflowerblue;
+        th {
+          word-wrap: break-word;
+          text-align: right;
+          text-wrap: pretty;
         }
-      }
-      &__cancel:hover::before {
-        content: "Видалити всі товари";
-        position: absolute;
-        display: block;
-        top: -40px;
-        right: 0;
-        color: $warn-txt;
-      }
-      &__table {
-        .order__order-table {
-          border-collapse: collapse;
-          table-layout: fixed;
-          width: 100%;
-          @media (max-width: 768px) {
-            width: 100%;
+        th:nth-child(1) {
+          width: 2rem;
+        }
+        @include media('max', 'md') {
+          th {
+            font-size: .8rem;
+            padding: .3rem .3rem;
+            line-height: 1.2rem;
           }
-          tr {
-            line-height: 2rem;
-            border-top: 1px dotted cornflowerblue;
-            border-bottom: 1px dotted cornflowerblue;
-            @media (max-width: 768px) {
-              th {
-                font-size: .8rem;
-                word-wrap: break-word;
-                padding: .3rem .3rem;
-                line-height: 1.2rem;
-              }
-              th:nth-child(1) {
-                background: rgba(#000000, $alpha: .2);
-                width: 2.5rem;
-              }
-              th:nth-child(4) {
-                width: 3rem;
-              }
-              th:nth-child(5) {
-                width: 3rem;
-              }
-              td:nth-child(1) {
-                background: rgba(#000000, $alpha: .2);
-              }
-            }
-            td {
-              text-align: center;
-              font-size: 1.2rem;
-              font-weight: 600;
-              &:last-child {
-                text-align: right;
-                padding: 0 1rem 0 0;
-              }
-            }
+          th:nth-child(1) { width: 3%; }
+          th:nth-child(2) { width: 17%; }
+          th:nth-child(3) { width: 20%; }
+          th:nth-child(4) { width: 15%; }
+          th:nth-child(5) { width: 15%; }
+          th:nth-child(6) { width: 15%; }
+          td:nth-child(7) { width: auto; }
+        }
+        @include media('max', 'sm') {
+          // th {}
+          th:nth-child(1) { width: 5%; }
+          th:nth-child(2) { width: 25%; }
+          th:nth-child(3) { width: 20%; }
+          th:nth-child(4) {
+            display: none;
+          }
+          th:nth-child(5) { width: 15%; }
+          th:nth-child(6) { width: 15%; }
+          td:nth-child(7) { width: auto; }
 
+        }
+      }
+      // &__body {}
+      &__footer {
+        td {
+          text-align: right;
+        }
+        @include media('max', 'sm') {
+          td:nth-child(1) {
+          }
+          td:nth-child(4) {
+            display: none;
           }
         }
       }
     }
   }
+  
+
+
 
 
   .person-data {

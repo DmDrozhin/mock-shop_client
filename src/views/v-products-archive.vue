@@ -88,10 +88,7 @@ export default {
     @include media('max', 'lg') {
       margin-top: 4rem;
     }
-    @include media('max', 'md') {
-      margin-top: 4rem;
-      font-size: 2.2rem;
-    }
+    // @include media('max', 'md') {}
   }
   &__filters {
     position: absolute;
@@ -99,35 +96,20 @@ export default {
     right: 1rem;
     top: -1rem;
     padding: 0.4rem 1rem;
+    // .head-filters {}
     @include media('max', 'lg') {
       top: 0;
       left: 0;
       right: 0;
-      // .head-filters {}
-    }
-    @include media('max', 'md') {
-      top: 0;
-      left: 0;
-      right: 0;
-      // .head-filters {}
     }
   }
   &__window {
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
     grid-auto-flow: row;
-    grid-auto-columns: minmax(300px, 350px);
+    grid-auto-columns: minmax(280px, 350px);
     grid-gap: 1rem;
-    // @include media('max', 'md') {
-    //   grid-template-columns: repeat(3, minmax(280px, 350px));
-    // }
-    // @include media('max', 'md') {
-    //   grid-template-columns: repeat(2, minmax(280px, 350px));
-    // }
-    // @include media('max', 'md') {
-    //   grid-template-columns: repeat(1, minmax(280px, 350px));
-    // }
   }
 }
 </style>

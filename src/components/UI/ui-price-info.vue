@@ -62,14 +62,14 @@ export default {
 .ui-price-info__label {
   color: rgb(53, 53, 53);
   font-weight: normal;
-  margin-bottom: -0.3rem;
+  margin-bottom: -0.1rem;
   text-align: right;
 }
 .ui-price-info__label-inline {
   margin-bottom: 0;
 }
 .ui-price-info__num {
-  margin-bottom: -0.6rem;
+  margin-bottom: -0.4rem;
   text-align: right;
 }
 .ui-price-info__num-inline {
