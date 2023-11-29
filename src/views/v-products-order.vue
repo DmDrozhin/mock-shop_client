@@ -33,72 +33,65 @@
 
 
       <!-- <<<<<<<<<<<<<<<<< FORM. PERSON DETAILS -->
-      <div class="person-data">
-        <div class="person person-data__person">
-          <h2 class="person__title">введіть свої дані</h2>
-          <div class="person__name-wrapper">
-            <ui-form-input
-              class="person__name1"
-              :icon="'person'"
-              :type="'text'"
-              :placeholder="'Ім\'я'"
-              :value="customer.name1"
-              :required="true"
-              @handleInput="customer.name1= $event"
-            ></ui-form-input>
-
-            <ui-form-input
-              class="person__name2"
-              :icon="'arrow_forward_ios'"
-              :type="'text'"
-              :placeholder="'По батькові'"
-              :value="customer.name2"
-              :required="false"
-              @handleInput="customer.name2 = $event"
-            ></ui-form-input>
-
-            <ui-form-input
-              class="person__name3"
-              :icon="'arrow_forward_ios'"
-              :type="'text'"
-              :placeholder="'Прізвище'"
-              :value="customer.name3"
-              :required="false"
-              @handleInput="customer.name3 = $event"
-            ></ui-form-input>
-          </div>
-
-          <div class="person__contacts-wrapper">
-            <ui-form-input
-              class="person__phone"
-              :icon="'phone'"
-              :type="'text'"
-              :placeholder="'Телефон'"
-              :value="customer.tel"
-              :required="true"
-              @handleInput="customer.tel = $event"
-            ></ui-form-input>
-
-            <ui-form-input
-              class="person__email"
-              :icon="'alternate_email'"
-              :type="'email'"
-              :placeholder="'Ел.пошта'"
-              :value="customer.email"
-              :required="false"
-              @handleInput="customer.email = $event"
-            ></ui-form-input>
-
-            <ui-form-input
-              class="person__address"
-              :icon="'location_pin'"
-              :type="'text'"
-              :placeholder="'Адреса'"
-              :value="customer.address"
-              :required="true"
-              @handleInput="customer.address = $event"
-            ></ui-form-input>
-          </div>
+      <div class="body__person-data person">
+        <h2 class="person__title">замовник</h2>
+        <div class="person__name-wrapper">
+          <ui-form-input
+            class="person__name1"
+            :icon="'person'"
+            :type="'text'"
+            :placeholder="'Ім\'я'"
+            :value="customer.name1"
+            :required="true"
+            @handleInput="customer.name1= $event"
+          ></ui-form-input>
+          <ui-form-input
+            class="person__name2"
+            :icon="'arrow_forward_ios'"
+            :type="'text'"
+            :placeholder="'По батькові'"
+            :value="customer.name2"
+            :required="false"
+            @handleInput="customer.name2 = $event"
+          ></ui-form-input>
+          <ui-form-input
+            class="person__name3"
+            :icon="'arrow_forward_ios'"
+            :type="'text'"
+            :placeholder="'Прізвище'"
+            :value="customer.name3"
+            :required="false"
+            @handleInput="customer.name3 = $event"
+          ></ui-form-input>
+        </div>
+        <div class="person__contacts-wrapper">
+          <ui-form-input
+            class="person__phone"
+            :icon="'phone'"
+            :type="'text'"
+            :placeholder="'Телефон'"
+            :value="customer.tel"
+            :required="true"
+            @handleInput="customer.tel = $event"
+          ></ui-form-input>
+          <ui-form-input
+            class="person__email"
+            :icon="'alternate_email'"
+            :type="'email'"
+            :placeholder="'Ел.пошта'"
+            :value="customer.email"
+            :required="false"
+            @handleInput="customer.email = $event"
+          ></ui-form-input>
+          <ui-form-input
+            class="person__address"
+            :icon="'location_pin'"
+            :type="'text'"
+            :placeholder="'Адреса'"
+            :value="customer.address"
+            :required="true"
+            @handleInput="customer.address = $event"
+          ></ui-form-input>
         </div>
       </div>
 
@@ -217,6 +210,10 @@ export  default {
 .order {
   background-color: #fff;
   position: relative;
+  padding: 2rem 1rem;
+  @include media('max', 'sm') {
+    padding: 2rem 1rem;
+  }
   // &__title {}
   &__cancel-btn {
     position: absolute;
@@ -230,6 +227,7 @@ export  default {
       border-collapse: collapse;
       table-layout: fixed;
       width: 100%;
+      margin-bottom: 2rem;
       &__head {
         line-height: 2rem;
         border-top: 1px dotted cornflowerblue;
@@ -237,7 +235,7 @@ export  default {
         th {
           word-wrap: break-word;
           text-align: right;
-          text-wrap: pretty;
+          text-wrap: balance;
         }
         th:nth-child(1) {
           width: 2rem;
@@ -259,7 +257,7 @@ export  default {
         @include media('max', 'sm') {
           // th {}
           th:nth-child(1) { width: 5%; }
-          th:nth-child(2) { width: 25%; }
+          th:nth-child(2) { width: 20%; }
           th:nth-child(3) { width: 20%; }
           th:nth-child(4) {
             display: none;
@@ -284,21 +282,17 @@ export  default {
         }
       }
     }
-  }
-  
-
-
-
-
-  .person-data {
-    // width: clamp(50%, 80rem, 90%);
-    margin: 0 auto 3rem;
-    padding: 1rem;
-    border: 1px dotted cornflowerblue;
-    border-radius: $base-radius;
+    .body__person-data, 
     .person {
-      &__title {
+      // width: clamp(50%, 80rem, 90%);
+      margin: 0 auto 3rem;
+      padding: 1rem;
+      border: 1px dotted cornflowerblue;
+      border-radius: $base-radius;
+      @include media('max', 'md') {
+        flex-wrap: wrap;
       }
+      // &__title {}
       &__name-wrapper {
         display: flex;
         justify-content: space-between;
@@ -329,14 +323,20 @@ export  default {
         flex: 1 0 auto;
       }
       &__address {
-        flex: 1 0 auto;
-        @media (min-width: 768px) {
-          flex: 1 0 100%;
-        }
+        flex: 1 0 100%;
+        // @include media('max', 'md') {}
       }
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
-      }
+    }
+  }
+  
+
+
+
+
+  .person-data {
+
+    .person {
+
     }
   }
 

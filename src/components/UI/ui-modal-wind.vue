@@ -83,7 +83,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #00000023;
   }
   &__slide-wind {
@@ -92,7 +92,7 @@ export default {
     pointer-events: auto;
     top: 0;
     right: 0;
-    height: 100%;
+    height: 100vh;
     width: 30%;
     background-color: #0000007d;
     @include media('max', 'lg') {

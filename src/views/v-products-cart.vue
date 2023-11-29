@@ -40,7 +40,7 @@
           :price="CART_SUM"
           :fontSz="1.8"
           :label="'Сума замовлення:'"
-          :isVertical="this.$store.state.screen < 420"
+          :isVertical="this.$store.state.screen < 412"
           :room="8"
         ></ui-price-info>
 
@@ -159,6 +159,7 @@ export default {
   // &__title {}
   // &__items {}
 
+
   &__summary, .summary {
     border: 1px dotted $salad-fnt;
     background-color: #fff;
@@ -170,7 +171,7 @@ export default {
     @include media('max', 'md') {
       // background-color: #b9efb4;
       flex-direction: column;
-      padding: 2rem 0.5rem;
+      padding: 2rem 1rem;
       align-items: stretch;
       gap: 3rem;
     }

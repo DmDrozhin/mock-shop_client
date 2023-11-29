@@ -170,11 +170,10 @@ export default {
   flex-wrap: wrap;
   margin-bottom: 2rem;
   @include media('max', 'md') {
-    align-items: stretch;
-    justify-content: space-between;
+    padding: 1rem 2rem;
   }
   @include media('max', 'sm') {
-    padding: 0.5rem 0.5rem;
+    padding: 1rem 1rem;
   }
   &__cancel-btn {
     position: absolute;
@@ -187,8 +186,8 @@ export default {
   }
   &__tech-data {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
+    bottom: 1rem;
+    left: 1rem;
   }
 
   // DIVIDER-1

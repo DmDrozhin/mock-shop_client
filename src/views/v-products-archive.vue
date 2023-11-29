@@ -106,9 +106,9 @@ export default {
   &__window {
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
     grid-auto-flow: row;
-    grid-auto-columns: minmax(280px, 350px);
+    grid-auto-columns: minmax(280px, 360px);
     grid-gap: 1rem;
   }
 }

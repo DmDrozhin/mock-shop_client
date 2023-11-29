@@ -44,7 +44,10 @@
               class="header__nav-menu nav-menu"
               v-if="flagNAV"
             >
-              <div class="nav-menu__btn-wrapper btn-comp-ui">
+              <div 
+                class="nav-menu__btn-wrapper btn-comp-ui"
+                @click="toggleNAV()"
+              >
                 <ui-menu-button
                   class="btn-comp-ui__ui-btn"
                   :linkTo="'products'"
@@ -55,7 +58,10 @@
                 ></ui-menu-button>
               </div>
             
-              <div class="nav-menu__btn-wrapper btn-comp-ui">
+              <div 
+                class="nav-menu__btn-wrapper btn-comp-ui"
+                @click="toggleNAV()"
+              >
                 <ui-menu-button
                   class="btn-comp-ui__ui-btn"
                   :linkTo="'cart'"
@@ -66,7 +72,10 @@
                 ></ui-menu-button>
               </div>
             
-              <div class="nav-menu__btn-wrapper btn-comp-ui">
+              <div 
+                class="nav-menu__btn-wrapper btn-comp-ui"
+                @click="toggleNAV()"
+              >
                 <ui-menu-button
                   class="btn-comp-ui__ui-btn"
                   :linkTo="'order'"
@@ -74,6 +83,7 @@
                   :data="ORDER.length > 0 ? ORDER.length : false"
                   :status="ORDER.length > 0"
                   :isMobile="isMobile"
+                  @click="toggleNAV()"
                 ></ui-menu-button>
               </div>
               <div class="nav-menu__button nav-menu__nav-icon nav-icon">
@@ -175,6 +185,9 @@ export default {
   justify-content: space-between;
   scrollbar-gutter: stable;
   position: relative;
+  @include media('max', 'md') {
+    padding: 0;
+  }
   &__loader-block {
     $loader-size: 5rem;
     position: absolute;
@@ -264,7 +277,7 @@ export default {
     // height: 100%;
     &__view {
       height: 100%;
-      padding: 1rem 1rem 3rem 1rem;
+      padding-top: 3rem;
     }
   }
 // GENERAL STRUCTURE
