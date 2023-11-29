@@ -29,6 +29,7 @@ export  default {
     const toSend = {}
     toSend[ordNum] = order
     toSend.customer = customer
+    commit('SET_LOADER', true)
     return axios.post('http://localhost:3002/orders', toSend, {
         headers: { 'Content-Type': 'application/json' },
         maxRedirects: 0,

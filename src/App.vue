@@ -7,6 +7,12 @@
     
   >   <!-- <<<<<<<<<<< MODAL Wind -->
     <ui-modal-wind></ui-modal-wind>
+    <!-- <<<<<<<<<<< MAIN ICON -->
+    <ui-main-icon 
+        :size="mainIcon.size"
+        :viewBox="mainIcon.viewBox"
+        class="app__main-icon"
+    ></ui-main-icon>
     <!-- <<<<<<<<<<< LOADER -->
     <div class="app__loader-block">
       <ui-loader v-if="IS_LOADER"></ui-loader>
@@ -28,14 +34,7 @@
     
     <header>
       <!-- <<<<<<<<<<< TITLE RAW -->
-      <div class="app__title title flex-wrapper">
-        <ui-main-icon 
-          :size="mainIcon.size"
-          :viewBox="mainIcon.viewBox"
-          class="title__main-icon"
-        ></ui-main-icon>
-        <h1 class="title__text">{{ title }}</h1>
-      </div>
+      <h1 class="app__title">{{ title }}</h1>
 
       <div class="app__header header flex-wrapper">
         <div class="header__nav-menu-wrapper">
@@ -188,6 +187,26 @@ export default {
   @include media('max', 'md') {
     padding: 0;
   }
+  &__main-icon {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    @include media('max', 'md') {
+      top: 1rem;
+      left: 1rem;
+    }
+    @include media('max', 'sm') {
+      left: 1rem;
+      top: 1rem;
+    }
+  }
+  &__title {
+    position: relative;
+    margin: 5rem 10rem;
+    @include media('max', 'sm') {
+      margin: 6rem 5rem;
+    }
+  }
   &__loader-block {
     $loader-size: 5rem;
     position: absolute;
@@ -195,6 +214,14 @@ export default {
     height: $loader-size;
     right: 3rem;
     top: 3rem;
+    @include media('max', 'md') {
+      right: 3rem;
+      top: 8rem;
+    }
+    @include media('max', 'sm') {
+      right: 1rem;
+      top: 9rem;
+    }
   }
   &__nav-burger {
     position: absolute;
@@ -202,26 +229,7 @@ export default {
     right: 1rem;
     z-index: 1;
   } 
-  &__title, .title {
-    position: relative;
-    justify-content: space-between;
-    margin: 1rem 0;
-    gap: 1rem;
-    &__main-icon {
-      flex: 1 0 auto;
-    }
-    &__text {
-      flex: 1 1 auto;
-    }
-    @include media('max', 'md') {
-      margin-bottom: 5rem;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    @include media('max', 'sm') {
 
-    }
-  }
   &__header, .header {
     gap: 1rem;
     flex-wrap: wrap;
