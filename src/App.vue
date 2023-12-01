@@ -135,7 +135,7 @@ export default {
   methods: {
     ...mapActions (['GET_PRODS_FM_SERVER', 'SET_SCREEN']),
 
-    toggleNAV() { this.flagNAV = !this.flagNAV },
+    toggleNAV() { if (this.isMobile) this.flagNAV = !this.flagNAV },
   },
 
   computed: {
@@ -220,7 +220,7 @@ export default {
     }
     @include media('max', 'sm') {
       right: 1rem;
-      top: 9rem;
+      top: 8.5rem;
     }
   }
   &__nav-burger {

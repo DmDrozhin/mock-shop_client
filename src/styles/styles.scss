@@ -11,7 +11,7 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
   box-sizing: border-box;
 }
 $site-height: 100vh;
-$site-width: 1980px;
+$site-width: 1280px;
 html {
   height: $site-height;
   height: -webkit-fill-available;
@@ -24,22 +24,6 @@ body {
   max-width: $site-width;
 }
 
-.hr1 {
-  width: 90%;  
-  border: 2px solid #6495ed;  
-  margin: .5rem 1px .5rem auto;  
-}
-.hr2 {
-  width: 80%;
-  border: 1px solid lightgray;
-  margin: .5rem auto;
-  margin: 0 0 .5rem 0;
-}
-.hr3 {
-  width: 100%;
-  border: 2px solid #6495ed;  
-  margin: .5rem 1px .5rem auto;  
-}
 .flex-wrapper {
   display: flex;
   justify-content: space-between;
@@ -102,4 +86,77 @@ i {
 }
 
 
-// 1st 1280px, 2nd 980px, 3d 768px, 4th 580px, 5th 320px
+// PRINCIPAL
+body {
+  background-image: url('@/assets/images/main-background.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  @include media('max', 'md') {
+    background-size: contain;
+    background-position: top center;
+  }
+  // backdrop-filter: blur(2px) grayscale(50%) brightness(50%);
+  backdrop-filter: blur(2px) grayscale(50%);
+
+  scrollbar-gutter: stable;
+  margin: 0 auto;
+}
+
+// HEADERS
+h1 {
+  font-size: 3.5rem;
+  color: #6495ed;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .4rem;
+  text-shadow: 1px 1px 3px #000000;
+  @include media('max', 'lg') {
+    font-size: 2.6rem;
+    letter-spacing: .3rem;
+    text-wrap: pretty;
+  }
+  @include media('max', 'md') {
+    font-size: 2.5rem;
+    letter-spacing: .3rem;
+    text-wrap: pretty;
+  }
+  @include media('max', 'sm') {
+    font-size: 2rem;
+    letter-spacing: .4rem;
+    text-wrap: pretty;
+  }
+}
+h2 {
+  font-size: 2.5rem;
+  color: #878686;
+  text-align: center;
+  line-height: 4rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  margin-bottom: 1.5rem;
+  @include media('max', 'lg') {
+    font-size: 2.2rem;
+    letter-spacing: .2rem;
+    text-wrap: pretty;
+  }
+  @include media('max', 'md') {
+    font-size: 2rem;
+    letter-spacing: .1.5rem;
+    text-wrap: pretty;
+  }
+  @include media('max', 'sm') {
+    font-size: 1.8rem;
+    letter-spacing: .1.5rem;
+    text-wrap: pretty;
+  }
+}
+h3 {
+  font-size: 1.5rem;
+  color: $green-btn;
+  letter-spacing: .2rem;
+  text-align: center;
+  text-transform: uppercase;  
+}
