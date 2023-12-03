@@ -1,15 +1,16 @@
 <template>
   <div class="v-products-order order">
     <h2 class="order__title">{{ title }}</h2>
-    <ui-cancel-button
-      class="order__cancel-btn"
-      :size="30"
-      :color="'#fa7e70'"
-      :viewBox="'0 0 117 117'"
-      @cancel="cancelOrder()"
-    ></ui-cancel-button>
+    <div class="order__container">
+      <ui-cancel-button
+        class="order__cancel-btn"
+        :size="30"
+        :color="'#fa7e70'"
+        :viewBox="'0 0 117 117'"
+        @cancel="cancelOrder()"
+      ></ui-cancel-button>
 
-    <div class="order__body body">
+      <div class="order__body body">
         <!-- <<<<<<<<<<<<<<<<< ORDER TABLE -->
       <table class="body__table table">
         <tr class="table__head">
@@ -107,6 +108,11 @@
         </ui-order-button>
         <!-- @handlePrompt="handlePrompt()" -->
       </div>
+
+    </div>
+
+
+
 
     </div>
   </div>
@@ -215,6 +221,12 @@ export  default {
     padding: 2rem 1rem;
   }
   // &__title {}
+  &__container {
+    padding: 0 2rem;
+    @include media('max', 'sm') {
+      padding: 0 1rem;
+    }
+  }
   &__cancel-btn {
     position: absolute;
     top: 1rem;

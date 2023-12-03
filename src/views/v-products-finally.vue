@@ -1,26 +1,33 @@
 <template>
   <div class="v-products-finally finally">
 
-    <div class="finally__header">
-      <h2 class="finally__title">{{ title }}</h2>
-      <div class="finally__time"><h4>{{ time }}</h4></div>
+    <div class="finally__container">
+      <div class="finally__wrapper">
+
+        <div class="finally__header header">
+          <h2 class="header__txt">{{ title }}</h2>
+          <div class="header__time"><h4>{{ time }}</h4></div>
+        </div>
+
+        <div class="finally__main main">
+          <div class="main__message">
+            <p>Замовлення - або відправлено - resp.status === 201, або не відправлено</p>
+            <p>Надалі повертаємось до вибору товарів або пропонуємо upsales</p>
+          </div>
+          <div class="main__server-resp resp">
+            <h3 class="resp__title">Поточна відповідь відправки:</h3>
+            <br>
+            <h3 class="resp__content" v-if="GET_SERVER_RESP">{{ GET_SERVER_RESP }}</h3>
+          </div>
+        </div>
+
+        <div class="finally__footer footer">
+          <h3 class="footer__title">Some footer part</h3>
+        </div>
+      </div>
     </div>
 
-    <div class="finally__section">
-      <div class="finally__message">
-        <p>Замовлення - або відправлено - resp.status === 201, або не відправлено</p>
-        <p>Надалі повертаємось до вибору товарів або пропонуємо upsales</p>
-      </div>
-      <div class="finally__server-resp">
-        <h3>Поточна відповідь відправки:
-          <p v-if="GET_SERVER_RESP">{{ GET_SERVER_RESP }}</p>
-        </h3>
-      </div>
-    </div>
-    
-    <div class="finally__footer">
-      <h3>Some footer part</h3>
-    </div>
+
   </div>
 </template>
 
@@ -53,44 +60,60 @@ export  default {
 @import '@/styles/variables.scss';
 .v-products-finally,
 .finally {
-  background-color: #ffffffc1;
-  // border: 2px solid gold;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  &__header {
-    flex: 0 1 auto;
+  background-color: #ffffff;
+
+  &__container {
+    height: 100%;
+    padding: 0 2rem;
+    @include media('max', 'sm') {
+      padding: 0 1rem;
+    }
+  }
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__header, 
+  .header {
     // background-color: #a9e7a5;
+    &__title {
+      margin-bottom: 2rem;
+    }
+    &__time {
+      text-align: left;
+      margin-bottom: 4rem;
+    }
   }
-  &__title {
-    margin-bottom: 2rem;
-  }
-  &__time {
-    text-align: left;
-    margin-bottom: 4rem;
-  }
-  &__section {
-    flex: 1 1 auto;
+
+  &__main, 
+  .main {
+    flex: 1;
     // background-color: #ccc;
+    &__message {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    &__server-resp, .resp {
+      padding: 1rem 2rem;
+      border: 1px solid rgb(78, 78, 78);
+      // &__title {}
+      &__content {
+        color: cornflowerblue;
+        text-decoration: wavy;
+      }
+    }
   }
-  &__message p {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 4rem;
-  }
-  &__server-resp > h3 > p {
-    color: cornflowerblue;
-    text-decoration: wavy;
-    font-size: 1.5rem;
-    margin-left: 1rem;
-    border: 1px solid rgb(78, 78, 78);
-    margin-bottom: 1rem;
-  }
-  &__footer {
-    /* flex: 0 1 auto; */
+
+
+  &__footer, 
+  .footer {
     // background-color: #66a3e8;
-    flex: 0 1 auto;
+    &__title {
+      margin-bottom: 2rem;
+    }
   }
 }
 

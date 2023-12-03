@@ -3,63 +3,64 @@
 
     <h2 class="cart__title">{{ title }}</h2>
 
-    <div class="cart__items">
-      <cartItem 
-        v-for="(item, idx) in CART"
-        :key="idx"
-        :prodData="item"
-        :idx="idx"
-        @updateCart="updateCart($event)"
-        @deleteItem="deleteItem($event)"
-      ></cartItem>
-    </div>
-
-    <!-- <<<<< SUMMARY >>>>>> -->
-    <div class="cart__summary summary" v-if="CART_PRODS_QT">
-      <div class="summary__part1 part1">
-
-        <ui-text-info
-          class="part1__prod-qt"
-          :num="CART_PRODS_QT"
-          :fontSz="1.5"
-          :label1="'Товарів:'"
-          :room="1"
-        ></ui-text-info>
-
-        <ui-text-info
-          class="part1__unit-qt"
-          :num="CART_QT"
-          :fontSz="1.5"
-          :label1="'Кількість:'"
-          :label2="'шт.'"
-          :room="1.5"
-        ></ui-text-info>
-
-        <ui-price-info
-          class="part1__total-sum"
-          :price="CART_SUM"
-          :fontSz="1.8"
-          :label="'Сума замовлення:'"
-          :isVertical="this.$store.state.screen < 412"
-          :room="8"
-        ></ui-price-info>
-
+    <div class="cart__container">
+      <div class="cart__items">
+        <cartItem 
+          v-for="(item, idx) in CART"
+          :key="idx"
+          :prodData="item"
+          :idx="idx"
+          @updateCart="updateCart($event)"
+          @deleteItem="deleteItem($event)"
+        ></cartItem>
       </div>
 
-      <div class="summary__part2 part2">
-        <ui-order-button
-          class="part2__order-button"        
-          :icon="'shopping_bag'"
-          :frontIcon="'double_arrow'"
-          :isActive="CART_SUM > 0"
-          :color="'#329c26'"
-          @handlePrompt="processCart()"
-        >Оформити
-        </ui-order-button>
+      <!-- <<<<< SUMMARY >>>>>> -->
+      <div class="cart__summary summary" v-if="CART_PRODS_QT">
+        <div class="summary__part1 part1">
+
+          <ui-text-info
+            class="part1__prod-qt"
+            :num="CART_PRODS_QT"
+            :fontSz="1.5"
+            :label1="'Товарів:'"
+            :room="1"
+          ></ui-text-info>
+
+          <ui-text-info
+            class="part1__unit-qt"
+            :num="CART_QT"
+            :fontSz="1.5"
+            :label1="'Кількість:'"
+            :label2="'шт.'"
+            :room="1.5"
+          ></ui-text-info>
+
+          <ui-price-info
+            class="part1__total-sum"
+            :price="CART_SUM"
+            :fontSz="1.8"
+            :label="'Сума замовлення:'"
+            :isVertical="this.$store.state.screen < 412"
+            :room="8"
+          ></ui-price-info>
+
+        </div>
+
+        <div class="summary__part2 part2">
+          <ui-order-button
+            class="part2__order-button"        
+            :icon="'shopping_bag'"
+            :frontIcon="'double_arrow'"
+            :isActive="CART_SUM > 0"
+            :color="'#329c26'"
+            @handlePrompt="processCart()"
+          >Оформити
+          </ui-order-button>
+        </div>
+
       </div>
-
     </div>
-
   </div>
 </template>
 
@@ -157,6 +158,12 @@ export default {
 .cart {
   background-color: rgba($color: #fff, $alpha: 0.8);
   // &__title {}
+  &__container {
+    padding: 0 2rem;
+    @include media('max', 'sm') {
+      padding: 0 1rem;
+    }
+  }
   // &__items {}
 
 

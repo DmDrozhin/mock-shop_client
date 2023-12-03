@@ -305,7 +305,7 @@ export default {
     &__text {
       text-align: center;
       margin-bottom: 1rem;
-      color: #000000;
+      color: #fff;
       font-weight: 600;
       font-size: 1.3rem;
     }
