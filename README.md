@@ -4,7 +4,8 @@ Framewok: Vue2
 Mian addons: Vue router, Vuex,
 Addons: Axios
 
-# Приложение работает в паре с 'mock-shop__server-side' - серверная часть.
+# Тест версия - магазин спотривной одежны.
+- Приложение работает в паре с 'mock-shop__server-side' - серверная часть.
 - Источник данных товаров - массив из объектов, формат JSON. Если сервер не запущен, то источником служит локальная копия массива товаров.
 - Массив преобразуется для более удобной работы с данными и находится в Vuex state.
 - Товары фильтруются по наличию выбранного размера.
@@ -21,8 +22,8 @@ Addons: Axios
 - При удачной оправке, отображается уведомление об отправке и призыв к дальнейшему действию.
 - При не удачной - соответствующее сообщение, товары остаются на странице «заказа»
 
-
-# The application works in tandem with 'mock-shop__server-side'.
+# Test sportswear store
+- The application works in tandem with 'mock-shop__server-side'.
 - The source of goods data is an array of objects, JSON format. If the server is not running, the source is a local copy of the goods array.
 - The array is converted for more convenient work with data and is located in Vuex state.
 - Goods are filtered by availability of the selected size.
