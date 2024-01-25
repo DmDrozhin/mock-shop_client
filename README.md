@@ -23,31 +23,21 @@ Addons: Axios
 
 
 # The application works in tandem with 'mock-shop__server-side'.
-- The Axios Get request returns an array of objects with product data. In case of error, it reassigns the source from the local copy.
-- After processing the array, the products are displayed at the gallery.
-- The products can be filtered with sizw select block in the upper right corner.
-- Product card contains rinformation: permanently roduct is constantly available in stock, as well as the table
- with the remaining stock according to the size of the product. In the size selector, only sizes that are in stock are available in the options.
-- By default, the "move to cart" button is not active and becomes available after selecting the size of the product.
-- If the product with the identical article is already in the "cart", the button informs that the product is already in the "cart" and is in inactive mode.
-- Navigation buttons at the top of the page allow you to move between the gallery of goods, "shopping cart" and checkout page in case that
-there are data moved there in the "shopping cart" and / or on the order page.
-- In the shopping cart you can select the quantity of goods for purchase. At the stage of selecting the quantity for the order in the shopping cart, this selection is not registered in the product object. 
-is not registered in the product object. Calculation takes place after moving the item to the order page, as well as back from the order page
-to the "shopping cart" page. In the state when an item is on the order page, it can still be selected on the main page, product gallery
-and the number of available items reflects the difference between the original quantity and the quantity on the order page.
-- At any action, i.e. adding a product to the "shopping cart" page or order page, as well as in the opposite direction, a modal window appears for the user to confirm the selected action.
-window for the user to confirm the selected action or reject the selected action.
-- There are buttons for deleting all products from the order page, i.e. canceling the order. In this case, the selected products are returned to the "cart" page.
-- In the "cart" of goods there is a possibility to delete goods individually, by the selected name and size. 
-- The "move to cart" button in the gallery returns to the active state.
-- After user confirmation, the order data is to be sent with Axios Post request to server for further processing and forwarding to manager.
-- In case of successful ordering, the user continues interacting with the goods taking into account the already ordered quantity of goods, i.e. the available balance.
-
-Translated with DeepL.com (free version)
-
-
-
+- The source of goods data is an array of objects, JSON format. If the server is not running, the source is a local copy of the goods array.
+- The array is converted for more convenient work with data and is located in Vuex state.
+- Goods are filtered by availability of the selected size.
+- The product card contains information: product in stock, table with stock balances. In the selection options are available only products that are in stock.
+- The "move to cart" button becomes active after selecting a size.
+- If a product with the identical article is already in the "cart", the user receives a message that the product is already in the "cart", while the button is in passive mode.
+- Navigation buttons at the top of the page allow to move between the "gallery" of goods, "cart" of goods and "order" page in case they contain data.
+- In the shopping cart you can select the quantity of goods.
+- Calculation of balances occurs after moving the goods from the "cart" to the "order" page and back. 
+- The actions of moving the goods are accompanied by the appearance of a modal window to confirm the actions.
+- When canceling an order, there is a transition to the page of the "cart" of orders with the display of canceled goods.
+- In the "cart" of goods there is a possibility to delete goods.
+- After order confirmation on the "order" page, the data is sent to the server part of the application for further processing and sending a mail message about the new order.
+- In case of successful ordering, a notification about sending and a call for further action is displayed.
+- If unsuccessful, the corresponding message is displayed, the goods remain on the "order" page
 
 ## Project setup
 ```
